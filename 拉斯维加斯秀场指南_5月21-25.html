@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拉斯维加斯秀场指南 - 5月21-25日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px; text-align: center; border-bottom: 3px solid #e94560; }
+  .header h1 { font-size: 2.2em; color: #fff; margin-bottom: 10px; }
+  .header p { color: #aaa; font-size: 1.1em; }
+  .schedule-bar { display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .schedule-bar .day { background: #1a1a2e; border: 1px solid #333; border-radius: 10px; padding: 10px 18px; text-align: center; min-width: 100px; }
+  .schedule-bar .day .date { font-size: 1.2em; font-weight: bold; color: #e94560; }
+  .schedule-bar .day .info { font-size: 0.8em; color: #999; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .category { margin: 30px 0; }
+  .category-title { font-size: 1.6em; color: #e94560; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .category-title .icon { font-size: 1.4em; }
+  .shows-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+  .show-card { background: #1a1a2e; border-radius: 12px; padding: 20px; border: 1px solid #2a2a4a; transition: transform 0.2s, border-color 0.2s; }
+  .show-card:hover { transform: translateY(-3px); border-color: #e94560; }
+  .show-card .name { font-size: 1.3em; font-weight: bold; color: #fff; margin-bottom: 5px; }
+  .show-card .venue { color: #888; font-size: 0.9em; margin-bottom: 10px; }
+  .show-card .rating { display: inline-flex; align-items: center; gap: 5px; background: #0f3460; padding: 3px 10px; border-radius: 20px; font-size: 0.85em; margin-bottom: 10px; }
+  .rating .stars { color: #ffd700; }
+  .rating .count { color: #999; }
+  .show-card .details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9em; margin: 10px 0; }
+  .show-card .details .label { color: #888; }
+  .show-card .details .value { color: #ddd; font-weight: 500; }
+  .price-tag { display: inline-block; background: linear-gradient(135deg, #e94560, #c62a47); color: #fff; font-size: 1.3em; font-weight: bold; padding: 5px 15px; border-radius: 8px; margin: 10px 0; }
+  .price-tag .original { text-decoration: line-through; font-size: 0.7em; color: #ffaaaa; margin-right: 5px; }
+  .price-tag .discount { background: #27ae60; font-size: 0.6em; padding: 2px 6px; border-radius: 4px; margin-left: 5px; }
+  .availability { margin-top: 10px; padding: 8px 12px; border-radius: 8px; font-size: 0.85em; }
+  .avail-warning { background: #4a2020; border: 1px solid #e94560; color: #ff6b6b; }
+  .avail-ok { background: #1a3a1a; border: 1px solid #27ae60; color: #6bff6b; }
+  .avail-sold { background: #3a3a1a; border: 1px solid #f39c12; color: #ffd700; }
+  .show-days { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
+  .show-days .day-chip { padding: 3px 10px; border-radius: 15px; font-size: 0.8em; }
+  .day-chip.available { background: #1a3a1a; color: #6bff6b; border: 1px solid #27ae60; }
+  .day-chip.unavailable { background: #3a1a1a; color: #ff6b6b; border: 1px solid #e94560; text-decoration: line-through; }
+  .summary-section { background: #16213e; border-radius: 12px; padding: 25px; margin: 30px 0; border: 1px solid #0f3460; }
+  .summary-section h2 { color: #e94560; margin-bottom: 15px; }
+  .summary-table { width: 100%; border-collapse: collapse; }
+  .summary-table th { background: #0f3460; color: #fff; padding: 12px; text-align: left; }
+  .summary-table td { padding: 10px 12px; border-bottom: 1px solid #2a2a4a; }
+  .summary-table tr:hover td { background: #1a2a4e; }
+  .tip { background: #2a1a0a; border-left: 4px solid #f39c12; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .tip strong { color: #f39c12; }
+  .footer { text-align: center; padding: 30px; color: #666; font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>拉斯维加斯秀场完全指南</h1>
+  <p>Memorial Day 周末 | 2026年5月21日 - 5月25日 | 6人团</p>
+  <div class="schedule-bar">
+    <div class="day"><div class="date">5/21 周四</div><div class="info">4人 (4女)</div></div>
+    <div class="day"><div class="date">5/22 周五</div><div class="info">6人 (全员)</div></div>
+    <div class="day"><div class="date">5/23 周六</div><div class="info">6人 (全员)</div></div>
+    <div class="day"><div class="date">5/24 周日</div><div class="info">4人 (2女+2男)</div></div>
+    <div class="day"><div class="date">5/25 周一</div><div class="info">4人 (离开日)</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="tip">
+    <strong>重要提示：</strong> 以下信息基于 vegas.com 实时数据（2026年3月22日查询）。Memorial Day 周末是拉斯维加斯旺季，热门秀票卖得很快，建议尽早购票！标注 "仅剩X张" 的秀需要特别注意。
+  </div>
+
+  <!-- ============ 魔术秀 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">🎩</span> 魔术秀 Magic Shows</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">Shin Lim - Limitless</div>
+        <div class="venue">The Palazzo at The Venetian</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.7/5 <span class="count">(1,908 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">7:30 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">近景魔术 | 全年龄</span>
+        </div>
+        <div class="price-tag"><span class="original">$76</span>$60 起 <span class="discount">-14%</span></div>
+        <div class="availability avail-warning">高需求 - 部分场次仅剩 5 张票！</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Mat Franco - Magic Reinvented Nightly</div>
+        <div class="venue">The LINQ Hotel & Casino</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.8/5 <span class="count">(2,659 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">7:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">互动魔术 | 全年龄</span>
+        </div>
+        <div class="price-tag">$50 起</div>
+        <div class="availability avail-warning">高需求 - 仅剩 8 张票！</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Piff the Magic Dragon</div>
+        <div class="venue">Flamingo Las Vegas</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.7/5 <span class="count">(1,656 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、六、日</span>
+          <span class="label">时间：</span><span class="value">7:00 PM</span>
+          <span class="label">时长：</span><span class="value">75 分钟</span>
+          <span class="label">类型：</span><span class="value">喜剧魔术 | 8岁+</span>
+        </div>
+        <div class="price-tag"><span class="original">$61</span>$39 起 <span class="discount">-31%</span></div>
+        <div class="availability avail-ok">有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip unavailable">5/22 ✗</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Penn & Teller</div>
+        <div class="venue">Masquerade Tower at Rio Hotel & Casino</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.2/5 <span class="count">(3,279 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">8:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">喜剧魔术 | 全年龄</span>
+        </div>
+        <div class="price-tag">$62 起</div>
+        <div class="availability avail-ok">有票可订 (Special Offer)</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Criss Angel - MINDFREAK</div>
+        <div class="venue">Planet Hollywood Resort & Casino</div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周三-日</span>
+          <span class="label">时间：</span><span class="value">7:00 PM</span>
+          <span class="label">时长：</span><span class="value">75 分钟</span>
+          <span class="label">类型：</span><span class="value">大型幻术 | 全年龄</span>
+        </div>
+        <div class="price-tag">$102 起</div>
+        <div class="availability avail-ok">有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 太阳马戏团 & 杂技秀 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">🎪</span> 太阳马戏团 & 杂技秀 Cirque du Soleil & Acrobatics</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">"O" by Cirque du Soleil</div>
+        <div class="venue">Bellagio</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.5/5 | 音质 4.8/5 <span class="count">(4,142 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">6:30 PM, 9:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">水上杂技 | 5岁+</span>
+        </div>
+        <div class="price-tag">$150 起</div>
+        <div class="availability avail-warning">78% 已售出 - 部分区域售罄！</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Michael Jackson ONE</div>
+        <div class="venue">Mandalay Bay</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.6/5 | 音质 4.7/5 <span class="count">(5,900 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">6:30 PM, 9:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">音乐杂技 | 5岁+</span>
+        </div>
+        <div class="price-tag">$117 起</div>
+        <div class="availability avail-warning">75% 已售出 - 部分场次仅剩 2 张票！</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Mystere by Cirque du Soleil</div>
+        <div class="venue">Treasure Island Hotel & Casino</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.6/5 | 音质 4.8/5 <span class="count">(5,711 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周五-周二（周三四休）</span>
+          <span class="label">时间：</span><span class="value">7:00 PM, 9:30 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">经典杂技 | 全年龄</span>
+        </div>
+        <div class="price-tag">$66 起</div>
+        <div class="availability avail-sold">5/21 无票！仅 5/22、5/23、5/24 可订</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">KA by Cirque du Soleil</div>
+        <div class="venue">MGM Grand</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.4/5 | 剧场 4.8/5 <span class="count">(3,659 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周六-周三（周四五休）</span>
+          <span class="label">时间：</span><span class="value">7:00 PM, 9:30 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">武术杂技 | 3岁+</span>
+        </div>
+        <div class="price-tag">$131 起</div>
+        <div class="availability avail-sold">5/21-22 无票！5/23、5/24、5/25 可订</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip unavailable">5/22 ✗</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Mad Apple by Cirque du Soleil</div>
+        <div class="venue">New York - New York</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.1/5 | 舞台 4.6/5 <span class="count">(1,274 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、五、六</span>
+          <span class="label">时间：</span><span class="value">7:00 PM, 9:30 PM</span>
+          <span class="label">时长：</span><span class="value">75 分钟</span>
+          <span class="label">类型：</span><span class="value">成人杂技喜剧 | 18岁+</span>
+        </div>
+        <div class="price-tag">$63 起</div>
+        <div class="availability avail-warning">73% 已售 - 部分场次仅剩 4 张票！(6人可能不够)</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip unavailable">5/24 ✗</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Blue Man Group</div>
+        <div class="venue">Luxor Hotel & Casino</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.4/5 | 音质 4.7/5 <span class="count">(4,873 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">2:00, 5:00, 8:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">互动表演 | 全年龄</span>
+        </div>
+        <div class="price-tag"><span class="original">$70</span>$58 起 <span class="discount">-17%</span></div>
+        <div class="availability avail-ok">69% 已售 - 有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 沉浸式体验 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">🌐</span> 沉浸式体验 Immersive Experience</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">The Wizard of Oz at Sphere</div>
+        <div class="venue">The Sphere at The Venetian</div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">11AM, 2PM, 5PM, 8PM</span>
+          <span class="label">时长：</span><span class="value">75 分钟</span>
+          <span class="label">类型：</span><span class="value">沉浸式电影 | 全年龄</span>
+        </div>
+        <div class="price-tag">$134 起</div>
+        <div class="availability avail-ok">有票 - 每日多个场次</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">No Doubt Live at Sphere</div>
+        <div class="venue">The Sphere at The Venetian</div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、六、日</span>
+          <span class="label">时间：</span><span class="value">8:30 PM</span>
+          <span class="label">类型：</span><span class="value">演唱会 | 限时驻场</span>
+        </div>
+        <div class="price-tag">$187 起</div>
+        <div class="availability avail-ok">有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip unavailable">5/22 ✗</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 舞蹈秀 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">💃</span> 舞蹈秀 Dance Shows</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">Jabbawockeez</div>
+        <div class="venue">MGM Grand</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.6/5 | 音质 4.7/5 <span class="count">(1,801 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">2:00, 5:30, 8:00 PM</span>
+          <span class="label">时长：</span><span class="value">75 分钟</span>
+          <span class="label">类型：</span><span class="value">嘻哈街舞 | 全年龄</span>
+        </div>
+        <div class="price-tag"><span class="original">$87</span>$78 起 <span class="discount">-5%</span></div>
+        <div class="availability avail-warning">82% 已售</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Awakening</div>
+        <div class="venue">Wynn Las Vegas</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.4/5 | 舞台 4.9/5 <span class="count">(1,538 评价)</span></div>
+        <div class="details">
+          <span class="label">类型：</span><span class="value">舞蹈/综艺/深夜</span>
+          <span class="label">特色：</span><span class="value">Top Seller 热门秀</span>
+        </div>
+        <div class="price-tag">价格待查</div>
+        <div class="availability avail-sold">5/21 无票！5/22、5/23、5/24 可订（今天被订 100 次！）</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 综艺/成人秀 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">🔥</span> 综艺 & 成人秀 Variety & Adult Shows</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">Absinthe</div>
+        <div class="venue">Caesars Palace</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.5/5 | 音质 4.6/5 <span class="count">(2,755 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">7:00, 9:00, 11:00 PM</span>
+          <span class="label">时长：</span><span class="value">75 分钟</span>
+          <span class="label">类型：</span><span class="value">杂技+喜剧+歌舞 | 18岁+</span>
+        </div>
+        <div class="price-tag">$121 起</div>
+        <div class="availability avail-warning">极高需求 - 部分场次仅剩 1 张票！</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Atomic Saloon Show</div>
+        <div class="venue">The Venetian Resort</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.4/5 | 音质 4.6/5 <span class="count">(482 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">7:30 PM, 9:30 PM</span>
+          <span class="label">时长：</span><span class="value">70 分钟</span>
+          <span class="label">类型：</span><span class="value">成人喜剧杂技 | 18岁+</span>
+        </div>
+        <div class="price-tag"><span class="original">$92</span>$82 起 <span class="discount">-3%</span></div>
+        <div class="availability avail-warning">部分区域售罄 - 仅剩 6 张票！</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Magic Mike Live</div>
+        <div class="venue">SAHARA Las Vegas</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.5/5 | 音质 4.7/5 <span class="count">(647 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">5:00, 7:30, 10:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">男性舞蹈秀 | 18岁+</span>
+        </div>
+        <div class="price-tag">$74 起</div>
+        <div class="availability avail-warning">仅剩 3 张票！(6人买不齐)</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Australia's Thunder From Down Under</div>
+        <div class="venue">Excalibur</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.5/5 | 音质 4.6/5 <span class="count">(714 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">8:00 PM, 10:00 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">类型：</span><span class="value">男性舞蹈秀 | 18岁+</span>
+        </div>
+        <div class="price-tag"><span class="original">$89</span>$70 起 <span class="discount">-17%</span></div>
+        <div class="availability avail-warning">83% 已售 - 仅剩 3 张票！(6人买不齐)</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">ROUGE - The Sexiest Show in Vegas</div>
+        <div class="venue">The STRAT Hotel</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.4/5 | 舞台 4.6/5 <span class="count">(825 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">8:30, 9:00, 10:30 PM</span>
+          <span class="label">时长：</span><span class="value">85 分钟</span>
+          <span class="label">类型：</span><span class="value">成人歌舞秀 | 18岁+</span>
+        </div>
+        <div class="price-tag">$54 起</div>
+        <div class="availability avail-ok">有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 喜剧秀 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">😂</span> 喜剧秀 Comedy Shows</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">Nikki Glaser & David Spade: The Vegas Residency</div>
+        <div class="venue">The Colosseum at Caesars Palace</div>
+        <div class="rating"><span class="stars">★★★★</span> 4.0/5 | 剧场 4.9/5 <span class="count">(11 评价 - 新秀)</span></div>
+        <div class="details">
+          <span class="label">类型：</span><span class="value">脱口秀驻场 | 限时</span>
+          <span class="label">特色：</span><span class="value">两大喜剧明星联合</span>
+        </div>
+        <div class="price-tag">价格待查</div>
+        <div class="availability avail-sold">5/21 无票！仅 5/22、5/23 可订</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip unavailable">5/24 ✗</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Gabriel "Fluffy" Iglesias</div>
+        <div class="venue">The Chelsea at The Cosmopolitan</div>
+        <div class="details">
+          <span class="label">时间：</span><span class="value">8:00 PM</span>
+          <span class="label">类型：</span><span class="value">脱口秀 | 限时场</span>
+        </div>
+        <div class="price-tag">价格待查 (Ticketmaster)</div>
+        <div class="availability avail-ok">5/23-24 有票</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip unavailable">5/22 ✗</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div name="name">Sebastian Maniscalco</div>
+        <div class="name">Sebastian Maniscalco</div>
+        <div class="venue">Encore Theatre at Wynn</div>
+        <div class="details">
+          <span class="label">时间：</span><span class="value">7:30 PM & 10:30 PM</span>
+          <span class="label">类型：</span><span class="value">脱口秀 | 限时场</span>
+          <span class="label">票价：</span><span class="value">$145-$172</span>
+        </div>
+        <div class="price-tag">$145 起</div>
+        <div class="availability avail-ok">5/23-24 有票</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip unavailable">5/22 ✗</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 演唱会 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">🎵</span> 演唱会 & 音乐秀 Concerts & Music</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">Jonas Brothers: Greetings From Las Vegas</div>
+        <div class="venue">Dolby Live at Park MGM</div>
+        <div class="details">
+          <span class="label">时间：</span><span class="value">8:00 PM</span>
+          <span class="label">场馆：</span><span class="value">5,200 座 | Dolby Atmos</span>
+          <span class="label">类型：</span><span class="value">驻场演唱会</span>
+        </div>
+        <div class="price-tag">$49 起</div>
+        <div class="availability avail-ok">有票可订</div>
+        <div class="show-days">
+          <span class="day-chip unavailable">5/21 ✗</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Carlos Santana</div>
+        <div class="venue">House of Blues at Mandalay Bay</div>
+        <div class="details">
+          <span class="label">类型：</span><span class="value">摇滚传奇驻场</span>
+          <span class="label">票价：</span><span class="value">$99.50 起</span>
+        </div>
+        <div class="price-tag">$99.50 起</div>
+        <div class="availability avail-ok">5/21、23、24 有票</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip unavailable">5/22 ✗</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+      <div class="show-card">
+        <div class="name">Donny Osmond</div>
+        <div class="venue">Harrah's Las Vegas</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.9/5 | 特效 4.8/5 <span class="count">(1,026 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周四、五、六</span>
+          <span class="label">时间：</span><span class="value">7:30 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+        </div>
+        <div class="price-tag"><span class="original">$165</span>$73 起 <span class="discount">-53%</span></div>
+        <div class="availability avail-ok">有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip unavailable">5/24 ✗</span>
+          <span class="day-chip unavailable">5/25 ✗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 晚餐秀 ============ -->
+  <div class="category">
+    <div class="category-title"><span class="icon">🍽</span> 晚餐秀 Dinner Shows</div>
+    <div class="shows-grid">
+
+      <div class="show-card">
+        <div class="name">Tournament of Kings</div>
+        <div class="venue">Excalibur Hotel & Casino</div>
+        <div class="rating"><span class="stars">★★★★★</span> 4.5/5 | 舞台 4.8/5 <span class="count">(1,862 评价)</span></div>
+        <div class="details">
+          <span class="label">演出日：</span><span class="value">周一、四、五、六、日</span>
+          <span class="label">时间：</span><span class="value">6:00 PM, 8:30 PM</span>
+          <span class="label">时长：</span><span class="value">90 分钟</span>
+          <span class="label">包含：</span><span class="value">全套晚餐 + 骑士对决秀</span>
+        </div>
+        <div class="price-tag"><span class="original">$81</span>$70 起 <span class="discount">-7%</span></div>
+        <div class="availability avail-ok">79% 已售 - 有票可订</div>
+        <div class="show-days">
+          <span class="day-chip available">5/21 ✓</span>
+          <span class="day-chip available">5/22 ✓</span>
+          <span class="day-chip available">5/23 ✓</span>
+          <span class="day-chip available">5/24 ✓</span>
+          <span class="day-chip available">5/25 ✓</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 性价比排行 ============ -->
+  <div class="summary-section">
+    <h2>性价比排行 (6人总价估算)</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>秀名</th>
+          <th>类别</th>
+          <th>评分</th>
+          <th>每人价格</th>
+          <th>6人总价</th>
+          <th>票务状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Piff the Magic Dragon</td><td>魔术喜剧</td><td>4.7/5</td><td>$39 起</td><td>$234 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>2</td><td>Jonas Brothers</td><td>演唱会</td><td>-</td><td>$49 起</td><td>$294 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>3</td><td>Mat Franco</td><td>魔术</td><td>4.8/5</td><td>$50 起</td><td>$300 起</td><td style="color:#ffd700">仅剩8张</td></tr>
+        <tr><td>4</td><td>ROUGE</td><td>成人秀</td><td>4.4/5</td><td>$54 起</td><td>$324 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>5</td><td>Blue Man Group</td><td>互动表演</td><td>4.4/5</td><td>$58 起</td><td>$348 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>6</td><td>Shin Lim</td><td>魔术</td><td>4.7/5</td><td>$60 起</td><td>$360 起</td><td style="color:#ffd700">仅剩5张</td></tr>
+        <tr><td>7</td><td>Penn & Teller</td><td>魔术</td><td>4.2/5</td><td>$62 起</td><td>$372 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>8</td><td>Mad Apple</td><td>成人杂技</td><td>4.1/5</td><td>$63 起</td><td>$378 起</td><td style="color:#ff6b6b">仅剩4张</td></tr>
+        <tr><td>9</td><td>Mystere</td><td>太阳马戏</td><td>4.6/5</td><td>$66 起</td><td>$396 起</td><td style="color:#6bff6b">有票(5/22-24)</td></tr>
+        <tr><td>10</td><td>Tournament of Kings</td><td>晚餐秀</td><td>4.5/5</td><td>$70 起</td><td>$420 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>11</td><td>Donny Osmond</td><td>音乐</td><td>4.9/5</td><td>$73 起</td><td>$438 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>12</td><td>Jabbawockeez</td><td>街舞</td><td>4.6/5</td><td>$78 起</td><td>$468 起</td><td style="color:#ffd700">82%已售</td></tr>
+        <tr><td>13</td><td>Atomic Saloon</td><td>成人综艺</td><td>4.4/5</td><td>$82 起</td><td>$492 起</td><td style="color:#ff6b6b">仅剩6张</td></tr>
+        <tr><td>14</td><td>Michael Jackson ONE</td><td>太阳马戏</td><td>4.6/5</td><td>$117 起</td><td>$702 起</td><td style="color:#ff6b6b">仅剩2张</td></tr>
+        <tr><td>15</td><td>Absinthe</td><td>综艺</td><td>4.5/5</td><td>$121 起</td><td>$726 起</td><td style="color:#ff6b6b">仅剩1张</td></tr>
+        <tr><td>16</td><td>Wizard of Oz</td><td>沉浸体验</td><td>-</td><td>$134 起</td><td>$804 起</td><td style="color:#6bff6b">有票</td></tr>
+        <tr><td>17</td><td>"O"</td><td>太阳马戏</td><td>4.5/5</td><td>$150 起</td><td>$900 起</td><td style="color:#ffd700">78%已售</td></tr>
+        <tr><td>18</td><td>No Doubt at Sphere</td><td>演唱会</td><td>-</td><td>$187 起</td><td>$1,122 起</td><td style="color:#6bff6b">有票</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ 票务紧张警告 ============ -->
+  <div class="tip" style="border-left-color: #e94560; background: #2a0a0a;">
+    <strong style="color:#e94560;">紧急提醒 - 以下秀 6 张票可能买不齐：</strong><br>
+    - <strong>Absinthe</strong>: 部分场次仅剩 1 张票<br>
+    - <strong>Michael Jackson ONE</strong>: 部分场次仅剩 2 张票<br>
+    - <strong>Magic Mike Live</strong>: 部分场次仅剩 3 张票<br>
+    - <strong>Australia's Thunder</strong>: 部分场次仅剩 3 张票<br>
+    - <strong>Mad Apple</strong>: 部分场次仅剩 4 张票<br>
+    - <strong>Shin Lim</strong>: 部分场次仅剩 5 张票<br>
+    如果想看这些秀，建议立即购票！可以选择不同场次来确保 6 人都能入场。
+  </div>
+
+  <div class="tip">
+    <strong>购票建议：</strong><br>
+    - 主要购票渠道：<a href="https://www.vegas.com/shows/" style="color:#e94560">vegas.com</a> | <a href="https://www.ticketmaster.com" style="color:#e94560">Ticketmaster</a><br>
+    - vegas.com 目前有 "Lucky in Vegas Sale"，部分秀最高 55% 折扣<br>
+    - 注册 vegas.com Insider 可额外享受 10% 折扣<br>
+    - 很多秀支持 "Bundle & Save"（捆绑购买更便宜）<br>
+    - 多数秀提供 24 小时前免费取消
+  </div>
+
+</div>
+
+<div class="footer">
+  数据来源：vegas.com 实时查询 (2026年3月22日) | 价格含手续费 | 仅供参考，实际票价以购票时为准
+</div>
+
+</body>
+</html>

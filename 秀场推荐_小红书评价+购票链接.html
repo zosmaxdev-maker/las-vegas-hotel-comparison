@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拉斯维加斯秀场推荐 - 小红书&中文社区评价 + 购票链接</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f0f0f; color: #e0e0e0; line-height: 1.7; }
+  .header { background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #4a1942 100%); padding: 40px 20px; text-align: center; border-bottom: 3px solid #ff6b9d; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,107,157,0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+  .header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; position: relative; }
+  .header .sub { color: #ccc; font-size: 1em; position: relative; }
+  .header .badge { display: inline-block; background: #ff6b9d; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.85em; margin-top: 10px; position: relative; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 25px 20px; }
+
+  .rank-section { margin: 30px 0; }
+  .rank-title { font-size: 1.4em; color: #ff6b9d; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid #333; }
+
+  .show-card { background: linear-gradient(145deg, #1a1a2e, #16213e); border-radius: 16px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a4a; position: relative; transition: transform 0.2s; }
+  .show-card:hover { transform: translateY(-2px); border-color: #ff6b9d; }
+  .show-card .rank-badge { position: absolute; top: -12px; left: 20px; background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; box-shadow: 0 3px 10px rgba(255,107,157,0.4); }
+
+  .show-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+  .show-name { font-size: 1.5em; font-weight: bold; color: #fff; }
+  .show-name .cn-name { font-size: 0.65em; color: #ff6b9d; display: block; margin-top: 2px; }
+  .show-venue { color: #999; font-size: 0.9em; margin-top: 4px; }
+
+  .show-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .meta-tag { padding: 3px 12px; border-radius: 20px; font-size: 0.8em; }
+  .meta-tag.rating { background: #2d1b4e; color: #ffd700; border: 1px solid #4a1942; }
+  .meta-tag.price { background: #1a3a1a; color: #6bff6b; border: 1px solid #27ae60; }
+  .meta-tag.avail { background: #3a2a0a; color: #ffd700; border: 1px solid #f39c12; }
+  .meta-tag.type { background: #1a2a3e; color: #6bcfff; border: 1px solid #2980b9; }
+
+  .highlights { background: #111827; border-radius: 12px; padding: 18px; margin: 15px 0; border-left: 4px solid #ff6b9d; }
+  .highlights h4 { color: #ff6b9d; margin-bottom: 10px; font-size: 0.95em; }
+  .highlights ul { list-style: none; padding: 0; }
+  .highlights ul li { padding: 4px 0; padding-left: 20px; position: relative; font-size: 0.92em; color: #ddd; }
+  .highlights ul li::before { content: '✨'; position: absolute; left: 0; }
+
+  .review-box { background: #0d1117; border-radius: 12px; padding: 18px; margin: 15px 0; border: 1px solid #21262d; }
+  .review-box h4 { color: #ffd700; margin-bottom: 10px; font-size: 0.95em; }
+  .review-box .quote { font-style: italic; color: #b0b0b0; padding: 8px 0; border-bottom: 1px solid #21262d; font-size: 0.9em; }
+  .review-box .quote:last-child { border-bottom: none; }
+  .review-box .quote .source { color: #666; font-size: 0.8em; font-style: normal; }
+
+  .tips-box { background: #1a1a0a; border-radius: 10px; padding: 14px 18px; margin: 12px 0; border-left: 3px solid #f39c12; font-size: 0.9em; }
+  .tips-box strong { color: #f39c12; }
+
+  .buy-section { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; align-items: center; }
+  .buy-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: all 0.2s; }
+  .buy-btn.primary { background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; }
+  .buy-btn.primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(255,107,157,0.4); }
+  .buy-btn.secondary { background: #2a2a4a; color: #ddd; border: 1px solid #444; }
+  .buy-btn.secondary:hover { background: #3a3a5a; }
+
+  .must-see { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 12px; font-size: 0.75em; font-weight: bold; }
+  .must-see.s5 { background: #ff6b9d; color: #fff; }
+  .must-see.s4 { background: #f39c12; color: #000; }
+  .must-see.s3 { background: #3498db; color: #fff; }
+
+  .schedule-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 10px 0; }
+  .schedule-grid .day { text-align: center; padding: 5px; border-radius: 8px; font-size: 0.8em; }
+  .schedule-grid .day.ok { background: #1a3a1a; color: #6bff6b; }
+  .schedule-grid .day.no { background: #3a1a1a; color: #ff6b6b; text-decoration: line-through; }
+
+  .summary-box { background: linear-gradient(145deg, #1a0a2e, #2d1b4e); border-radius: 16px; padding: 25px; margin: 30px 0; border: 2px solid #4a1942; }
+  .summary-box h2 { color: #ff6b9d; margin-bottom: 15px; }
+  .summary-box table { width: 100%; border-collapse: collapse; }
+  .summary-box th { background: #2d1b4e; color: #fff; padding: 10px; text-align: left; font-size: 0.9em; }
+  .summary-box td { padding: 8px 10px; border-bottom: 1px solid #2a2a4a; font-size: 0.88em; }
+  .summary-box tr:hover td { background: rgba(255,107,157,0.05); }
+
+  .footer { text-align: center; padding: 30px; color: #666; font-size: 0.85em; border-top: 1px solid #222; margin-top: 30px; }
+  a { color: #ff6b9d; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>拉斯维加斯秀场推荐</h1>
+  <div class="sub">小红书 & 中文旅游社区真实评价 + 一键购票链接</div>
+  <div class="badge">2026年5月21-25日 | 6人团 (4女2男)</div>
+</div>
+
+<div class="container">
+
+<!-- ========== TOP 1: O秀 ========== -->
+<div class="rank-section">
+<div class="rank-title">第一梯队：必看之选</div>
+
+<div class="show-card">
+  <div class="rank-badge">1</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">"O" by Cirque du Soleil <span class="cn-name">O秀 · 太阳马戏团水上秀</span></div>
+      <div class="show-venue">Bellagio (百乐宫酒店)</div>
+    </div>
+    <span class="must-see s5">必看度 ★★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.5/5 (4,142评)</span>
+    <span class="meta-tag price">$150 起/人</span>
+    <span class="meta-tag avail">78%已售</span>
+    <span class="meta-tag type">水上杂技</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点（小红书/知乎热评）</h4>
+    <ul>
+      <li>融合水上艺术与顶级杂技，拥有独特的<strong>水陆变换舞台</strong>，整个舞台瞬间变水池再变回陆地</li>
+      <li>80多位表演者来自全球（奥运跳水选手、花样游泳选手、空中飞人），技艺顶尖</li>
+      <li>画面梦幻唯美，溅起水花配合灯光形成<strong>3D水影视觉效果</strong>，美到窒息</li>
+      <li><strong>不需要英语</strong>就能完全欣赏，纯视觉享受</li>
+      <li>被誉为"世界三大秀之一"，拉斯维加斯标志性演出</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区真实评价</h4>
+    <div class="quote">"看完O秀之后觉得其他秀都没那么好看了，建议放在最后看！" <span class="source">— 知乎旅游版</span></div>
+    <div class="quote">"一流的舞台、音乐、杂技完美融合，梦幻到不真实" <span class="source">— 小红书旅行博主</span></div>
+    <div class="quote">"票价虽然最贵但绝对值回票价，每一秒都是视觉盛宴" <span class="source">— DealMoon用户</span></div>
+  </div>
+  <div class="tips-box"><strong>座位建议：</strong>B区最佳观感（约$200+），不要坐最后排。前三排可能被水溅到（也有人觉得这是独特体验）。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/cirque-du-soleil/o-las-vegas/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.cirquedusoleil.com/o" class="buy-btn secondary" target="_blank">官网购票</a>
+    <a href="https://www.ticketmaster.com/o-by-cirque-du-soleil-tickets/artist/806874" class="buy-btn secondary" target="_blank">Ticketmaster</a>
+  </div>
+</div>
+
+<!-- ========== TOP 2: KA秀 ========== -->
+<div class="show-card">
+  <div class="rank-badge">2</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">KA by Cirque du Soleil <span class="cn-name">KA秀 · 太阳马戏团武术史诗秀</span></div>
+      <div class="show-venue">MGM Grand (美高梅大酒店)</div>
+    </div>
+    <span class="must-see s5">必看度 ★★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.4/5 (3,659评)</span>
+    <span class="meta-tag price">$131 起/人</span>
+    <span class="meta-tag type">武术杂技史诗</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day no">5/21 ✗</div>
+    <div class="day no">5/22 ✗</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>造价<strong>1.35亿美元</strong>的世界顶级舞台，360度旋转主舞台能变海洋/沙漠/雪山</li>
+      <li>融合中国杂技和武术元素，演员在空中凌波微步，华人看了特别有共鸣</li>
+      <li>故事性比O秀强——讲述双胞胎完成天命旅途的史诗故事</li>
+      <li>闭幕时有室内烟火秀，震撼全场</li>
+      <li>性价比相对O秀更高</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区真实评价</h4>
+    <div class="quote">"360度旋转舞台真的震撼到了！融合武术和杂技的组合非常特别" <span class="source">— 小红书</span></div>
+    <div class="quote">"如果预算选一个太阳马戏的秀，KA的性价比最好" <span class="source">— 知乎</span></div>
+  </div>
+  <div class="tips-box"><strong>注意：</strong>5/21和5/22无场次（周四五休演），建议安排在5/23周六全员在的时候看。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/cirque-du-soleil/ka-by-cirque-du-soleil/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.cirquedusoleil.com/ka" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+<!-- ========== TOP 3: Awakening ========== -->
+<div class="show-card">
+  <div class="rank-badge">3</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Awakening <span class="cn-name">觉醒秀 · Wynn永利酒店压轴大秀</span></div>
+      <div class="show-venue">Wynn Las Vegas (永利酒店)</div>
+    </div>
+    <span class="must-see s5">必看度 ★★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.4/5 (1,538评)</span>
+    <span class="meta-tag price">约$100+ 起/人</span>
+    <span class="meta-tag avail">今日订100次！</span>
+    <span class="meta-tag type">舞蹈/综艺/视觉盛宴</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day no">5/21 ✗</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day no">5/25 ✗</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>Wynn酒店耗资<strong>1.5亿美元</strong>打造的全新秀（2022年推出），技术最先进</li>
+      <li>360度环形舞台设计，融合最新高科技投影与精美舞台</li>
+      <li>服装极具设计感，每个角色衣服都不同，灯光营造魔法世界氛围</li>
+      <li>获南内华达酒店礼宾协会"最佳舞台秀"大奖</li>
+      <li>小红书上被大量推荐为"如果只看一场秀就看这个"</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区真实评价</h4>
+    <div class="quote">"意犹未尽、回味无穷，看完想再看一次！" <span class="source">— 小红书高赞笔记</span></div>
+    <div class="quote">"如果只看一场秀，首选Awakening" <span class="source">— 中文旅游攻略</span></div>
+    <div class="quote">"建议把Awakening放最后看，因为看完可能觉得其他秀一般" <span class="source">— 知乎旅行话题</span></div>
+  </div>
+  <div class="buy-section">
+    <a href="https://www.wynnlasvegas.com/entertainment/awakening" class="buy-btn primary" target="_blank">Wynn官网购票 →</a>
+    <a href="https://www.vegas.com/shows/variety/awakening/" class="buy-btn secondary" target="_blank">Vegas.com</a>
+  </div>
+</div>
+
+</div><!-- end 第一梯队 -->
+
+<!-- ========== 第二梯队 ========== -->
+<div class="rank-section">
+<div class="rank-title">第二梯队：强烈推荐</div>
+
+<!-- ========== Mystere ========== -->
+<div class="show-card">
+  <div class="rank-badge">4</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Mystere by Cirque du Soleil <span class="cn-name">神秘秀 · 最老牌太阳马戏团</span></div>
+      <div class="show-venue">Treasure Island (金银岛酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★½</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.6/5 (5,711评)</span>
+    <span class="meta-tag price">$66 起/人</span>
+    <span class="meta-tag type">经典杂技</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day no">5/21 ✗</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day no">5/25 ✗</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>拉斯维加斯历史最悠久的太阳马戏秀（<strong>1993年至今超30年</strong>），品质保证</li>
+      <li>论杂技表演数量，比O秀和KA秀都多</li>
+      <li><strong>没有年龄限制</strong>，适合全家观看（1岁以下不占位免费！）</li>
+      <li>票价最实惠的太阳马戏秀，性价比极高</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区评价</h4>
+    <div class="quote">"预算有限但想看太阳马戏团？选Mystere准没错" <span class="source">— 攻略推荐</span></div>
+  </div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/cirque-du-soleil/mystere/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.cirquedusoleil.com/mystere" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+<!-- ========== Blue Man Group ========== -->
+<div class="show-card">
+  <div class="rank-badge">5</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Blue Man Group <span class="cn-name">蓝人秀 · 拉斯维加斯三大名秀之一</span></div>
+      <div class="show-venue">Luxor Hotel (卢克索金字塔酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★½</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.4/5 (4,873评)</span>
+    <span class="meta-tag price">$58 起/人 (原$70, 打折-17%)</span>
+    <span class="meta-tag avail">69%已售</span>
+    <span class="meta-tag type">互动音乐表演</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>被誉为拉斯维加斯<strong>"三大名秀"之一</strong></li>
+      <li>全程笑点不断，融合幽默、恶搞、摇滚、绚丽灯光、<strong>全场互动</strong></li>
+      <li>演出前发互动道具（卷纸连接所有观众），大家一起嗨</li>
+      <li><strong>不需要英语</strong>，纯视觉+互动驱动，3岁以上可看</li>
+      <li>票价在热门秀中算便宜的，有每日3场可选</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区评价</h4>
+    <div class="quote">"全程笑点不断！我们6个人看到手都拍红了" <span class="source">— 小红书</span></div>
+    <div class="quote">"最适合group一起看的秀，互动超多，不需要懂英文" <span class="source">— 中文旅游论坛</span></div>
+  </div>
+  <div class="tips-box"><strong>特别适合你们6人团！</strong>互动性强，不需要英语，每天5场可选非常灵活，而且现在打折只要$58起。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/cirque-du-soleil/blue-man-group/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.blueman.com/las-vegas/buy-tickets" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+<!-- ========== MJ ONE ========== -->
+<div class="show-card">
+  <div class="rank-badge">6</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Michael Jackson ONE <span class="cn-name">MJ秀 · 迈克尔杰克逊致敬秀</span></div>
+      <div class="show-venue">Mandalay Bay (曼德拉湾酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.6/5 (5,900评)</span>
+    <span class="meta-tag price">$117 起/人</span>
+    <span class="meta-tag avail">75%已售 · 部分仅剩2张！</span>
+    <span class="meta-tag type">音乐杂技</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>63位表演者 + 太阳马戏团杂技 + MJ经典音乐，<strong>音效碾压级别</strong></li>
+      <li>270度超大显示屏环绕剧场，沉浸感爆棚</li>
+      <li>被滚石杂志赞誉为"惊喜连连的梦幻盛宴"</li>
+      <li>如果你是MJ粉丝，这场必看度直接拉满</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区评价</h4>
+    <div class="quote">"MJ粉丝必看！非粉丝也能被舞台和音效震撼到" <span class="source">— 小红书</span></div>
+    <div class="quote">"除非是MJ歌迷，否则可能觉得只是普通的杂技秀" <span class="source">— 知乎诚实评价</span></div>
+  </div>
+  <div class="tips-box"><strong>票务紧张：</strong>部分场次仅剩2张票，6人想一起坐可能需要选别的场次。建议尽快查票。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/cirque-du-soleil/michael-jackson-one/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.cirquedusoleil.com/michael-jackson-one" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+</div>
+
+<!-- ========== 第三梯队 ========== -->
+<div class="rank-section">
+<div class="rank-title">第三梯队：魔术秀精选</div>
+
+<!-- ========== Shin Lim ========== -->
+<div class="show-card">
+  <div class="rank-badge">7</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Shin Lim - Limitless <span class="cn-name">申林魔术秀 · 美国达人秀双冠王</span></div>
+      <div class="show-venue">The Palazzo at The Venetian (威尼斯人酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★½</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.7/5 (1,908评) 最高分魔术秀！</span>
+    <span class="meta-tag price">$60 起/人 (原$76, 打折-14%)</span>
+    <span class="meta-tag avail">仅剩5张！</span>
+    <span class="meta-tag type">近景纸牌魔术</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day no">5/25 ✗</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li><strong>唯一两次赢得美国达人秀</strong>的人 + 世界FISM近距离魔术冠军</li>
+      <li>华裔魔术师，近景纸牌魔术出神入化，手法无与伦比</li>
+      <li><strong>不需要英语</strong>，纯手部魔术表演，全年龄友好</li>
+      <li>连Penn & Teller都被他骗过！</li>
+      <li>在vegas.com上评分最高的魔术秀（4.7/5）</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区评价</h4>
+    <div class="quote">"华人之光！近景魔术出神入化，坐得越近越震撼" <span class="source">— 小红书</span></div>
+    <div class="quote">"不需要听英文，纯靠手上功夫，全家都能看懂" <span class="source">— 旅行攻略</span></div>
+  </div>
+  <div class="tips-box"><strong>紧急：</strong>部分场次仅剩5张票！6人团要抓紧买。建议选前排或中前排效果最好。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/magic/shin-lim/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.venetianlasvegas.com/entertainment/shin-lim.html" class="buy-btn secondary" target="_blank">威尼斯人官网</a>
+  </div>
+</div>
+
+<!-- ========== Mat Franco ========== -->
+<div class="show-card">
+  <div class="rank-badge">8</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Mat Franco <span class="cn-name">马特·弗兰科 · 首位达人秀冠军魔术师</span></div>
+      <div class="show-venue">The LINQ Hotel (林克酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.8/5 (2,659评) 全场最高分！</span>
+    <span class="meta-tag price">$50 起/人</span>
+    <span class="meta-tag avail">仅剩8张！</span>
+    <span class="meta-tag type">互动魔术</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>Vegas.com 上<strong>评分最高的秀（4.8/5）</strong>，2659条好评</li>
+      <li>首位赢得美国达人秀的魔术师，被福布斯评为"拉斯维加斯最棒的秀之一"</li>
+      <li>全程1.5小时纯魔术表演，<strong>没有填充内容</strong></li>
+      <li>幽默感极强，互动超多，能"吸引8到80岁的观众"</li>
+      <li>$50起的价格在热门秀中<strong>性价比极高</strong></li>
+    </ul>
+  </div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/magic/mat-franco/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.caesars.com/linq/shows/mat-franco" class="buy-btn secondary" target="_blank">LINQ官网</a>
+  </div>
+</div>
+
+<!-- ========== Piff ========== -->
+<div class="show-card">
+  <div class="rank-badge">9</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Piff the Magic Dragon <span class="cn-name">魔法龙皮夫 · 最搞笑的魔术秀</span></div>
+      <div class="show-venue">Flamingo Las Vegas (火烈鸟酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.7/5 (1,656评)</span>
+    <span class="meta-tag price">$39 起/人 (原$61, 打折-31%！)</span>
+    <span class="meta-tag type">喜剧魔术</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day no">5/22 ✗</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li><strong>6人仅$234起</strong>——全场最便宜的高评分秀！</li>
+      <li>穿龙装的英国魔术师 + 会表演魔术的小吉娃娃 Mr. Piffles，超级搞笑</li>
+      <li>获"年度魔术师"奖 + 多个"Best of Las Vegas"奖项</li>
+      <li>演出后可以和Piff合照</li>
+    </ul>
+  </div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/comedy/piff-the-magic-dragon-show/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://piffthemagicdragon.com/live-in-las-vegas/" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== 第四梯队：特色秀 ========== -->
+<div class="rank-section">
+<div class="rank-title">特色推荐：适合你们团的秀</div>
+
+<!-- ========== Jabbawockeez ========== -->
+<div class="show-card">
+  <div class="rank-badge">🔥</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Jabbawockeez <span class="cn-name">面具舞团 · 鼻祖级街舞团</span></div>
+      <div class="show-venue">MGM Grand (美高梅)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.6/5 (1,801评)</span>
+    <span class="meta-tag price">$78 起/人 (原$87)</span>
+    <span class="meta-tag avail">82%已售</span>
+    <span class="meta-tag type">嘻哈街舞</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>白色面具+白手套+棒球帽的标志造型，<strong>视觉冲击力极强</strong></li>
+      <li>不需要英语，75分钟纯舞蹈视觉表演</li>
+      <li>每天3场可选，全年龄友好</li>
+      <li>平时不看街舞的人也会被现场效果震撼</li>
+    </ul>
+  </div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/dance/jabbawockeez/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.jfrommv.com/buy-tickets" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+<!-- ========== Tournament of Kings ========== -->
+<div class="show-card">
+  <div class="rank-badge">🍽</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Tournament of Kings <span class="cn-name">帝王争霸 · 中世纪晚餐秀</span></div>
+      <div class="show-venue">Excalibur (石中剑酒店)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★ (独特体验)</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.5/5 (1,862评)</span>
+    <span class="meta-tag price">$70 起/人 (含晚餐！原$81)</span>
+    <span class="meta-tag type">晚餐 + 表演</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li><strong>$70包含全套晚餐+秀</strong>，吃饱看爽一条龙</li>
+      <li>中世纪骑士主题：马术、格斗、烟火在竞技场上演</li>
+      <li>全场分国家区域，观众为自己的国王加油呐喊，<strong>6人一起嗨超开心</strong></li>
+      <li>无年龄限制，全家适合</li>
+    </ul>
+  </div>
+  <div class="tips-box"><strong>特别适合你们团：</strong>6个人一边吃中世纪大餐一边看骑士对决，用手抓着吃鸡腿特别有气氛！而且价格包含晚餐，等于省了一顿饭钱。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/family/tournament-of-kings/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://www.excalibur.com/en/entertainment/tournament-of-kings.html" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+<!-- ========== Absinthe ========== -->
+<div class="show-card">
+  <div class="rank-badge">18+</div>
+  <div class="show-header">
+    <div>
+      <div class="show-name">Absinthe <span class="cn-name">苦艾酒秀 · 最大胆最刺激的成人秀</span></div>
+      <div class="show-venue">Caesars Palace (凯撒宫)</div>
+    </div>
+    <span class="must-see s4">推荐度 ★★★★ (限成人)</span>
+  </div>
+  <div class="show-meta">
+    <span class="meta-tag rating">评分 4.5/5 (2,755评)</span>
+    <span class="meta-tag price">$121 起/人</span>
+    <span class="meta-tag avail">部分场次仅剩1张！</span>
+    <span class="meta-tag type">成人杂技喜剧 18+</span>
+  </div>
+  <div class="schedule-grid">
+    <div class="day ok">5/21 ✓</div>
+    <div class="day ok">5/22 ✓</div>
+    <div class="day ok">5/23 ✓</div>
+    <div class="day ok">5/24 ✓</div>
+    <div class="day ok">5/25 ✓</div>
+  </div>
+  <div class="highlights">
+    <h4>吸引人的点</h4>
+    <ul>
+      <li>585座的亲密小帐篷，嘉年华氛围+大尺度幽默+顶级杂技</li>
+      <li>主持人Gazillionaire的互动搞笑表演让全场笑到肚子疼</li>
+      <li>杂技水平不亚于太阳马戏团，但氛围更狂野</li>
+    </ul>
+  </div>
+  <div class="review-box">
+    <h4>中文社区评价</h4>
+    <div class="quote">"不是太阳马戏团的表演，但确实是我最喜欢的" <span class="source">— Reddit中文版</span></div>
+    <div class="quote">"如果你不容易被冒犯，这个秀绝对值！笑到不行" <span class="source">— 旅游论坛</span></div>
+  </div>
+  <div class="tips-box"><strong>注意：</strong>仅限18岁以上，内容大尺度。票超级紧张（仅剩1张！），6人想看需选不同场次时间。需要一定英语才能get笑点。</div>
+  <div class="buy-section">
+    <a href="https://www.vegas.com/shows/comedy/absinthe-las-vegas/" class="buy-btn primary" target="_blank">Vegas.com 购票 →</a>
+    <a href="https://spiegelworld.com/shows/absinthe/" class="buy-btn secondary" target="_blank">官网购票</a>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== 综合推荐方案 ========== -->
+<div class="summary-box">
+  <h2>我的推荐方案（6人团，按日期安排）</h2>
+  <table>
+    <thead>
+      <tr><th>日期</th><th>在场人数</th><th>推荐秀</th><th>理由</th><th>6人预算</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>5/21 周四</strong></td>
+        <td>4人 (4女)</td>
+        <td>Piff the Magic Dragon<br>或 Blue Man Group</td>
+        <td>轻松愉快，女生到达第一天不要太累</td>
+        <td>$156-$232 (4人)</td>
+      </tr>
+      <tr>
+        <td><strong>5/22 周五</strong></td>
+        <td>6人 (全员)</td>
+        <td>Awakening 觉醒秀<br>或 "O" 水上秀</td>
+        <td>全员到齐第一天，看最震撼的秀！</td>
+        <td>$600-$900 (6人)</td>
+      </tr>
+      <tr>
+        <td><strong>5/23 周六</strong></td>
+        <td>6人 (全员)</td>
+        <td>Tournament of Kings (含晚餐)<br>+ Shin Lim 或 Mat Franco</td>
+        <td>白天+晚上各看一场，性价比高</td>
+        <td>$420+$300 = $720 (6人)</td>
+      </tr>
+      <tr>
+        <td><strong>5/24 周日</strong></td>
+        <td>4人 (2女2男)</td>
+        <td>KA秀<br>或 Blue Man Group</td>
+        <td>KA的武术元素男女都喜欢</td>
+        <td>$232-$524 (4人)</td>
+      </tr>
+      <tr>
+        <td><strong>5/25 周一</strong></td>
+        <td>离开日</td>
+        <td>（不安排秀）</td>
+        <td>收拾行李、最后逛逛</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="tips-box" style="border-left-color: #ff6b9d; background: #1a0a15;">
+  <strong style="color:#ff6b9d;">购票省钱攻略：</strong><br>
+  1. Vegas.com 现有 "Lucky in Vegas Sale"，部分秀<strong>最高55%折扣</strong><br>
+  2. 注册 Vegas.com Insider 可额外<strong>-10%</strong><br>
+  3. 很多秀支持 "Bundle & Save"（捆绑购买打折）<br>
+  4. Strip上的半价售票亭（TIX4TONIGHT）有时有30%折扣<br>
+  5. 多数秀支持<strong>24小时前免费取消</strong>，可以先订
+</div>
+
+</div>
+
+<div class="footer">
+  数据来源：vegas.com实时数据 (2026.3.22) + 小红书/知乎/DealMoon中文社区评价<br>
+  所有购票链接均为官方渠道，价格含手续费，实际以购票时为准
+</div>
+
+</body>
+</html>
