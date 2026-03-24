@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拉斯维加斯酒店比较 v2 - Memorial Day 2026</title>
+<style>
+:root { --gold: #ffd700; --dark: #0d0d1a; --card: #131328; --border: #252545; --text: #d0d0e0; --dim: #777; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; }
+.hero { background: linear-gradient(135deg, #0d0d2b 0%, #1a0a3e 50%, #2b1055 100%); padding: 40px 20px; text-align: center; border-bottom: 2px solid var(--gold); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5L35 20H50L38 30L42 45L30 35L18 45L22 30L10 20H25Z' fill='%23ffd70008'/%3E%3C/svg%3E") repeat; opacity: 0.3; }
+.hero h1 { color: var(--gold); font-size: 32px; margin-bottom: 8px; position: relative; letter-spacing: 2px; }
+.hero .subtitle { color: #a0a0c0; font-size: 15px; position: relative; }
+.hero .dates { display: inline-flex; gap: 20px; margin-top: 15px; flex-wrap: wrap; justify-content: center; position: relative; }
+.hero .date-chip { background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 6px 16px; font-size: 13px; color: var(--gold); }
+.hero .version { display: inline-block; background: rgba(231,76,60,0.2); border: 1px solid rgba(231,76,60,0.4); color: #ff6b6b; padding: 4px 14px; border-radius: 20px; font-size: 12px; margin-top: 12px; position: relative; }
+.constraint { max-width: 900px; margin: 20px auto; padding: 15px 25px; background: linear-gradient(90deg, #1a0a2e, #2a1040); border-left: 4px solid #e74c3c; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 12px; }
+.constraint .icon { font-size: 28px; }
+.constraint .text { font-size: 14px; color: #e0c0c0; }
+.constraint .text strong { color: #ff6b6b; }
+.constraint.new { border-left-color: #f39c12; }
+.constraint.new .text strong { color: #f39c12; }
+.stats { max-width: 1100px; margin: 20px auto; padding: 0 20px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 22px; text-align: center; min-width: 130px; }
+.stat .num { font-size: 22px; font-weight: 700; color: var(--gold); }
+.stat .lbl { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.section-title { max-width: 1100px; margin: 35px auto 18px; padding: 0 20px; }
+.section-title h2 { color: var(--gold); font-size: 22px; display: flex; align-items: center; gap: 10px; }
+.section-title h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+.hotels { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.hotel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 22px; overflow: hidden; transition: all 0.3s; }
+.hotel:hover { border-color: rgba(255,215,0,0.4); box-shadow: 0 4px 30px rgba(255,215,0,0.05); }
+.hotel-media { display: flex; height: 220px; overflow: hidden; position: relative; }
+.hotel-media .main-img { width: 55%; object-fit: cover; cursor: pointer; transition: transform 0.4s; }
+.hotel-media .main-img:hover { transform: scale(1.03); }
+.hotel-media .side-imgs { width: 45%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; }
+.hotel-media .side-imgs img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: opacity 0.3s; }
+.hotel-media .side-imgs img:hover { opacity: 0.85; }
+.hotel-media .img-count { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7); color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 11px; }
+.hotel-body { padding: 18px 22px; }
+.hotel-body .name { font-size: 20px; color: #fff; font-weight: 600; margin-bottom: 3px; }
+.hotel-body .loc { font-size: 12px; color: var(--dim); margin-bottom: 10px; }
+.hotel-body .meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+.badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.badge.score { background: #1a6b2e; color: #fff; }
+.badge.score.high { background: #0d7a3a; }
+.badge.tag { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); color: var(--gold); font-weight: 400; }
+.rooms { padding: 0 22px 18px; }
+.rooms-hdr { font-size: 14px; color: var(--gold); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.room-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+.room { background: #181835; border: 1px solid var(--border); border-radius: 8px; padding: 14px; transition: border-color 0.3s; }
+.room:hover { border-color: rgba(255,215,0,0.3); }
+a.room-link { text-decoration: none; color: inherit; display: block; }
+a.room-link .room { cursor: pointer; }
+a.room-link .room::after { content: '点击预订 →'; display: block; text-align: right; font-size: 11px; color: var(--gold); margin-top: 6px; opacity: 0; transition: opacity 0.3s; }
+a.room-link:hover .room::after { opacity: 1; }
+.room .r-name { font-size: 13px; font-weight: 600; color: #e0e0ff; margin-bottom: 4px; }
+.room .r-info { font-size: 11px; color: var(--dim); line-height: 1.7; margin-bottom: 6px; }
+.room .r-price { display: flex; justify-content: space-between; align-items: baseline; }
+.room .price-big { font-size: 20px; color: var(--gold); font-weight: 700; }
+.room .price-total { font-size: 12px; color: #999; }
+.room .alert { font-size: 11px; color: #e74c3c; margin-top: 3px; }
+.btn-book { display: inline-block; background: var(--gold); color: #000; padding: 7px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; transition: all 0.2s; }
+.btn-book:hover { background: #ffe44d; transform: translateY(-1px); }
+.plans { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+.plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.plan { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; position: relative; transition: all 0.3s; }
+.plan:hover { border-color: rgba(255,215,0,0.4); }
+.plan.top { border-color: var(--gold); }
+.plan.top::before { content: '#1 推荐'; position: absolute; top: 0; right: 18px; background: var(--gold); color: #000; padding: 4px 14px; border-radius: 0 0 8px 8px; font-size: 11px; font-weight: 700; }
+.plan h3 { font-size: 15px; color: #e0e0ff; margin-bottom: 6px; }
+.plan .total-price { font-size: 28px; font-weight: 700; color: var(--gold); margin: 8px 0 12px; }
+.plan .detail { font-size: 12px; color: #999; line-height: 2; }
+.plan .detail strong { color: #c0c0e0; }
+.plan .room-assign { background: #181835; border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
+.plan .room-assign .ra-title { font-size: 11px; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.plan .room-assign .ra-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 4px; }
+.plan .room-assign .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.plan .room-assign .dot.f { background: #ff69b4; }
+.plan .room-assign .dot.m { background: #4da6ff; }
+.footer { max-width: 1100px; margin: 0 auto; padding: 25px 20px; text-align: center; border-top: 1px solid var(--border); color: var(--dim); font-size: 11px; line-height: 1.8; }
+@media (max-width: 768px) {
+  .hotel-media { height: 180px; flex-direction: column; height: auto; }
+  .hotel-media .main-img { width: 100%; height: 200px; }
+  .hotel-media .side-imgs { width: 100%; height: 100px; }
+  .room-grid { grid-template-columns: 1fr; }
+  .plan-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 22px; }
+  .score-table { font-size: 11px; }
+  .score-table th, .score-table td { padding: 6px 4px; }
+}
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
+.summary-section { max-width: 1100px; margin: 0 auto 30px; padding: 0 20px; }
+.summary-box { background: linear-gradient(135deg, #131328 0%, #1a1040 100%); border: 2px solid var(--gold); border-radius: 16px; padding: 30px; }
+.summary-box h3 { color: var(--gold); font-size: 20px; text-align: center; margin-bottom: 20px; }
+.score-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; overflow-x: auto; display: block; }
+.score-table thead, .score-table tbody, .score-table tr { display: table; width: 100%; table-layout: fixed; }
+.score-table th { background: rgba(255,215,0,0.1); color: var(--gold); padding: 10px 6px; text-align: center; border-bottom: 2px solid var(--gold); font-size: 11px; }
+.score-table td { padding: 8px 6px; text-align: center; border-bottom: 1px solid var(--border); }
+.score-table tr:hover { background: rgba(255,215,0,0.03); }
+.score-table .plan-name { text-align: left; font-weight: 600; min-width: 120px; }
+.score-table .score-cell { font-weight: 700; font-size: 13px; }
+.score-bar { display: inline-block; height: 6px; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
+.score-total { font-size: 15px !important; }
+.alert-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+.alert-tag.danger { background: rgba(231,76,60,0.2); color: #e74c3c; }
+.alert-tag.warn { background: rgba(243,156,18,0.2); color: #f39c12; }
+.alert-tag.ok { background: rgba(46,204,113,0.15); color: #2ecc71; }
+.review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 20px 0; }
+.review-card { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 14px; border-left: 3px solid var(--border); }
+.review-card.bad { border-left-color: #e74c3c; }
+.review-card.warn { border-left-color: #f39c12; }
+.review-card.good { border-left-color: #2ecc71; }
+.review-card h5 { font-size: 13px; margin-bottom: 6px; }
+.review-card .issues { font-size: 11px; color: #999; line-height: 1.8; }
+.formula-box { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 16px; margin: 16px 0; border: 1px solid var(--border); }
+.formula-box h4 { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+.formula-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; color: #aaa; }
+.formula-row .f-label { flex: 1; }
+.formula-row .f-weight { color: var(--gold); font-weight: 700; min-width: 50px; text-align: right; }
+.formula-row.changed { background: rgba(243,156,18,0.1); border-radius: 4px; padding: 4px 8px; }
+.formula-row.changed .f-label { color: #f39c12; }
+.rank-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+@media (max-width: 700px) { .rank-grid { grid-template-columns: 1fr; } }
+.rank-card { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 18px; border: 1px solid var(--border); }
+.rank-card h4 { font-size: 14px; color: var(--gold); margin-bottom: 12px; text-align: center; }
+.cat-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+.cat-badge.suite { background: rgba(155,89,182,0.2); color: #bb6bd9; border: 1px solid rgba(155,89,182,0.3); }
+.cat-badge.room3 { background: rgba(52,152,219,0.2); color: #5dade2; border: 1px solid rgba(52,152,219,0.3); }
+.hotel-placeholder { width: 55%; height: 100%; background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 100%); display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--gold); font-weight: 700; letter-spacing: 2px; }
+.changes-box { max-width: 900px; margin: 0 auto 20px; padding: 15px 25px; background: linear-gradient(90deg, #1a2a0e, #2a3a10); border-left: 4px solid #2ecc71; border-radius: 0 8px 8px 0; }
+.changes-box h4 { color: #2ecc71; font-size: 14px; margin-bottom: 8px; }
+.changes-box ul { font-size: 13px; color: #b0d0b0; line-height: 2; padding-left: 18px; }
+.changes-box ul strong { color: #2ecc71; }
+</style>
+</head>
+<body>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lb-img" src="" alt="Preview">
+</div>
+
+<div class="hero">
+  <h1>LAS VEGAS</h1>
+  <div class="subtitle">Memorial Day 2026 酒店比较 | 6人(4女2男) &middot; 同酒店方案</div>
+  <div class="version">&#x1F504; v2 更新版 &mdash; 新增女生分房约束 + 舒适度优先评分</div>
+  <div class="dates">
+    <span class="date-chip">&#x1F469; 女A组(2人): 5/21 - 5/24 (3晚)</span>
+    <span class="date-chip">&#x1F469; 女B组(2人): 5/21 - 5/25 (4晚)</span>
+    <span class="date-chip">&#x1F468; 男组(2人): 5/22 - 5/25 (3晚)</span>
+  </div>
+</div>
+
+<div class="constraint">
+  <div class="icon">&#x1F6A8;</div>
+  <div class="text"><strong>核心约束: 男女必须分房 &middot; 6人同一酒店!</strong> 所有方案均保证男生和女生住不同房间，且全部住在同一家酒店。</div>
+</div>
+
+<div class="constraint new">
+  <div class="icon">&#x1F469;</div>
+  <div class="text"><strong>新增约束: 4女不得同住1间房!</strong> 女生必须分2间房，或住2卧室(2BR)套房。原S2(1BR)已升级为2BR；原S3(Elara 1BR, 无2BR可选)已移除。</div>
+</div>
+
+<div class="changes-box">
+  <h4>&#x1F4DD; v2 变更说明 (相对v1)</h4>
+  <ul>
+    <li><strong>女生分房:</strong> 不允许4女住同一间房 &mdash; 必须分2间房或2BR套房</li>
+    <li><strong>S2方案:</strong> 从1BR Suite($1,901)升级为2BR Suite($2,539)，女生分住2个卧室</li>
+    <li><strong>S3方案:</strong> 已移除(Elara无2BR选项，等同于R5三间房)</li>
+    <li><strong>评分调整:</strong> 舒适度权重从20分提高到<strong>30分</strong>；价格权重从30分降为<strong>20分</strong></li>
+    <li><strong>总方案数:</strong> 从11个调整为12个(移除S3, 新增S4 HGV 3BR Suite, 新增S5混合时段方案)</li>
+  </ul>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="num">9</div><div class="lbl">候选酒店</div></div>
+  <div class="stat"><div class="num">$1,820</div><div class="lbl">最低总价</div></div>
+  <div class="stat"><div class="num">$273</div><div class="lbl">最低人均</div></div>
+  <div class="stat"><div class="num">12</div><div class="lbl">住宿方案</div></div>
+</div>
+
+<!-- ===== 综合评分排名 ===== -->
+<div class="section-title"><h2>&#x1F3AF; 综合评分排名 (6人同酒店 &middot; 男女分房 &middot; 女生分房)</h2></div>
+<div class="summary-section">
+<div class="summary-box">
+  <h3>12种方案综合评分对比 (v2 新权重 &middot; 含税总价)</h3>
+
+  <!-- Scoring Formula -->
+  <div class="formula-box">
+    <h4>&#x1F4D0; 评分公式 (满分100) &mdash; v2 调整</h4>
+    <div class="formula-row changed"><span class="f-label">&#x1F6CB; 舒适隐私: 独立房间数/床型/空间/隐私程度 <strong style="color:#f39c12;">(&#x2191; 从20分提高)</strong></span><span class="f-weight" style="color:#f39c12;">30分</span></div>
+    <div class="formula-row changed"><span class="f-label">&#x1F4B0; 价格分: 总价越低越高, 线性归一化 (最低=20, 最高=0) <strong style="color:#f39c12;">(&#x2193; 从30分降低)</strong></span><span class="f-weight" style="color:#f39c12;">20分</span></div>
+    <div class="formula-row"><span class="f-label">&#x2B50; 评分: Expedia评分 &times; 2 (同酒店=统一评分)</span><span class="f-weight">20分</span></div>
+    <div class="formula-row"><span class="f-label">&#x1F9F9; 安全卫生: 基础20分, 按差评扣分 (床虫-15 / 跳蚤-8 / 蟑螂-5 / 一般清洁-2)</span><span class="f-weight">20分</span></div>
+    <div class="formula-row"><span class="f-label">&#x1F4CD; 位置: Strip主街=10, 近Strip步行=6-8</span><span class="f-weight">10分</span></div>
+  </div>
+
+  <!-- Main Score Table -->
+  <div style="overflow-x:auto;">
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th style="width:3%">#</th>
+        <th style="text-align:left;width:16%">方案</th>
+        <th style="width:5%">类型</th>
+        <th style="width:6%">总价</th>
+        <th style="width:5%">人均</th>
+        <th style="width:5%">女A<br><small>3晚</small></th>
+        <th style="width:5%">女B<br><small>4晚</small></th>
+        <th style="width:5%">男<br><small>3晚</small></th>
+        <th style="width:6%">舒适<br><small>/30</small></th>
+        <th style="width:5%">价格<br><small>/20</small></th>
+        <th style="width:5%">评分<br><small>/20</small></th>
+        <th style="width:5%">安全<br><small>/20</small></th>
+        <th style="width:4%">位置<br><small>/10</small></th>
+        <th style="width:6%">总分</th>
+        <th style="width:8%">差评风险</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- #1 R2: HGV Strip x3 84.6 -->
+      <tr style="background:rgba(155,89,182,0.1);">
+        <td style="color:#9b59b6;font-weight:700;">1</td>
+        <td class="plan-name" style="color:#9b59b6;">R2: HGV Strip &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td style="font-weight:700;">$2,555</td>
+        <td style="font-weight:700;">$426</td>
+        <td>$367</td><td>$503</td><td>$407</td>
+        <td class="score-cell" style="color:#2ecc71;"><span class="score-bar" style="width:28px;background:#2ecc71;"></span>28.5</td>
+        <td class="score-cell">8.1</td>
+        <td class="score-cell" style="color:#2ecc71;">18.0</td>
+        <td class="score-cell" style="color:#2ecc71;">20</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total" style="color:#9b59b6;">84.6</td>
+        <td><span class="alert-tag ok">&#x2705; 无差评</span></td>
+      </tr>
+      <!-- #2 S2: HGV Strip 2BR混合 83.3 -->
+      <tr style="background:rgba(155,89,182,0.08);">
+        <td style="color:#9b59b6;font-weight:700;">2</td>
+        <td class="plan-name" style="color:#9b59b6;">S2: HGV Strip 2BR混合</td>
+        <td><span class="cat-badge suite">套房</span></td>
+        <td style="font-weight:700;">$2,539</td>
+        <td style="font-weight:700;">$423</td>
+        <td>$368</td><td>$494</td><td>$408</td>
+        <td class="score-cell" style="color:#2ecc71;"><span class="score-bar" style="width:27px;background:#9b59b6;"></span>27.0</td>
+        <td class="score-cell">8.3</td>
+        <td class="score-cell" style="color:#2ecc71;">18.0</td>
+        <td class="score-cell" style="color:#2ecc71;">20</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total" style="color:#9b59b6;">83.3</td>
+        <td><span class="alert-tag ok">&#x2705; 无差评</span></td>
+      </tr>
+      <!-- #3 S5: HGV Strip 混合时段 80.0 -->
+      <tr style="background:rgba(155,89,182,0.08);">
+        <td style="color:#9b59b6;font-weight:700;">3</td>
+        <td class="plan-name" style="color:#9b59b6;">S5: HGV Strip 混合时段</td>
+        <td><span class="cat-badge suite">套房</span></td>
+        <td style="font-weight:700;">$2,654</td>
+        <td style="font-weight:700;">$442</td>
+        <td>$378</td><td>$504</td><td>$445</td>
+        <td class="score-cell" style="color:#2ecc71;"><span class="score-bar" style="width:26px;background:#9b59b6;"></span>25.5</td>
+        <td class="score-cell">6.5</td>
+        <td class="score-cell" style="color:#2ecc71;">18.0</td>
+        <td class="score-cell" style="color:#2ecc71;">20</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total" style="color:#9b59b6;">80.0</td>
+        <td><span class="alert-tag ok">&#x2705; 无差评</span></td>
+      </tr>
+      <!-- #4 S4: HGV Strip 3BR Suite 79.0 -->
+      <tr style="background:rgba(155,89,182,0.08);">
+        <td style="color:#9b59b6;font-weight:700;">4</td>
+        <td class="plan-name" style="color:#9b59b6;">S4: HGV Strip 3BR Suite</td>
+        <td><span class="cat-badge suite">套房</span></td>
+        <td style="font-weight:700;">$2,990</td>
+        <td style="font-weight:700;">$498</td>
+        <td>$449</td><td>$598</td><td>$449</td>
+        <td class="score-cell" style="color:#2ecc71;"><span class="score-bar" style="width:30px;background:#9b59b6;"></span>30.0</td>
+        <td class="score-cell">1.0</td>
+        <td class="score-cell" style="color:#2ecc71;">18.0</td>
+        <td class="score-cell" style="color:#2ecc71;">20</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total" style="color:#9b59b6;">79.0</td>
+        <td><span class="alert-tag ok">&#x2705; 无差评</span></td>
+      </tr>
+      <!-- #5 R7: Polo Towers x3 77.6 -->
+      <tr>
+        <td style="font-weight:700;">5</td>
+        <td class="plan-name">R7: Polo Towers &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td>$2,619</td>
+        <td>$437</td>
+        <td>$376</td><td>$516</td><td>$418</td>
+        <td class="score-cell">27.0</td>
+        <td class="score-cell">7.0</td>
+        <td class="score-cell">17.6</td>
+        <td class="score-cell">18</td>
+        <td class="score-cell">8</td>
+        <td class="score-cell score-total">77.6</td>
+        <td><span class="alert-tag ok">较好</span></td>
+      </tr>
+      <!-- #6 R1: TI x3 77.4 -->
+      <tr>
+        <td style="font-weight:700;">6</td>
+        <td class="plan-name">R1: TI &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td>$2,237</td>
+        <td>$373</td>
+        <td>$329</td><td>$450</td><td>$339</td>
+        <td class="score-cell">25.5</td>
+        <td class="score-cell">13.2</td>
+        <td class="score-cell">16.7</td>
+        <td class="score-cell">12</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total">77.4</td>
+        <td><span class="alert-tag warn">跳蚤诉讼</span></td>
+      </tr>
+      <!-- #7 R5: Elara x3 76.4 -->
+      <tr style="background:rgba(155,89,182,0.04);">
+        <td style="font-weight:700;">7</td>
+        <td class="plan-name">R5: Elara &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td>$2,967</td>
+        <td>$495</td>
+        <td>$426</td><td>$584</td><td>$473</td>
+        <td class="score-cell">27.0</td>
+        <td class="score-cell">1.4</td>
+        <td class="score-cell" style="color:#2ecc71;">18.0</td>
+        <td class="score-cell" style="color:#2ecc71;">20</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total">76.4</td>
+        <td><span class="alert-tag ok">&#x2705; 无差评</span></td>
+      </tr>
+      <!-- #8 R4: SAHARA x3 75.4 -->
+      <tr>
+        <td style="font-weight:700;">8</td>
+        <td class="plan-name">R4: SAHARA &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td>$2,703</td>
+        <td>$451</td>
+        <td>$388</td><td>$532</td><td>$431</td>
+        <td class="score-cell">25.5</td>
+        <td class="score-cell">5.7</td>
+        <td class="score-cell">17.2</td>
+        <td class="score-cell">18</td>
+        <td class="score-cell">9</td>
+        <td class="score-cell score-total">75.4</td>
+        <td><span class="alert-tag ok">较好</span></td>
+      </tr>
+      <!-- #9 R8: Casino Royale x3 75.2 -->
+      <tr style="background:rgba(255,215,0,0.04);">
+        <td style="font-weight:700;">9</td>
+        <td class="plan-name">R8: Casino Royale &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td style="font-weight:700;">$2,228</td>
+        <td>$371</td>
+        <td>$320</td><td>$439</td><td>$355</td>
+        <td class="score-cell">21.0</td>
+        <td class="score-cell">13.4</td>
+        <td class="score-cell">16.8</td>
+        <td class="score-cell">14</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total">75.2</td>
+        <td><span class="alert-tag warn">老旧/一般</span></td>
+      </tr>
+      <!-- #10 S1: Holiday Inn 2BR 74.0 -->
+      <tr style="background:rgba(46,204,113,0.06);">
+        <td style="color:#2ecc71;font-weight:700;">10</td>
+        <td class="plan-name" style="color:#2ecc71;">S1: Holiday Inn 2BR</td>
+        <td><span class="cat-badge suite">套房</span></td>
+        <td style="color:#2ecc71;font-weight:700;">$1,820</td>
+        <td style="color:#2ecc71;font-weight:700;">$303</td>
+        <td>$273</td><td>$364</td><td>$273</td>
+        <td class="score-cell">15.0</td>
+        <td class="score-cell"><span class="score-bar" style="width:20px;background:#2ecc71;"></span>20.0</td>
+        <td class="score-cell">18.0</td>
+        <td class="score-cell">15</td>
+        <td class="score-cell">6</td>
+        <td class="score-cell score-total" style="color:#2ecc71;">74.0</td>
+        <td><span class="alert-tag warn">蚂蚁/蟑螂</span></td>
+      </tr>
+      <!-- #11 R6: NY-NY x3 63.6 -->
+      <tr style="background:rgba(231,76,60,0.03);">
+        <td style="font-weight:700;color:#e74c3c;">11</td>
+        <td class="plan-name" style="color:#999;">R6: NY-NY &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td style="color:#e74c3c;">$3,053</td>
+        <td style="color:#e74c3c;">$509</td>
+        <td>$439</td><td>$601</td><td>$487</td>
+        <td class="score-cell">24.0</td>
+        <td class="score-cell">0.0</td>
+        <td class="score-cell">15.6</td>
+        <td class="score-cell">14</td>
+        <td class="score-cell">10</td>
+        <td class="score-cell score-total" style="color:#999;">63.6</td>
+        <td><span class="alert-tag warn">清洁一般</span></td>
+      </tr>
+      <!-- #12 R3: Excalibur x3 61.8 -->
+      <tr style="background:rgba(231,76,60,0.05);">
+        <td style="font-weight:700;color:#e74c3c;">12</td>
+        <td class="plan-name" style="color:#e74c3c;">R3: Excalibur &times; 3间</td>
+        <td><span class="cat-badge room3">三间房</span></td>
+        <td>$2,390</td>
+        <td>$398</td>
+        <td>$343</td><td>$470</td><td>$381</td>
+        <td class="score-cell">24.0</td>
+        <td class="score-cell">10.8</td>
+        <td class="score-cell">14.0</td>
+        <td class="score-cell" style="color:#e74c3c;">5</td>
+        <td class="score-cell">8</td>
+        <td class="score-cell score-total" style="color:#e74c3c;">61.8</td>
+        <td><span class="alert-tag danger">&#x1F6A8; 床虫!</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- Review Alerts -->
+  <div style="margin:24px 0;">
+    <h4 style="color:#e74c3c;font-size:14px;margin-bottom:12px;">&#x1F6A8; 差评预警 (来源: TripAdvisor / BBB / Expedia)</h4>
+    <div class="review-grid">
+      <div class="review-card good">
+        <h5 style="color:#2ecc71;">HGV on the Strip &mdash; 20/20 &#x2705;</h5>
+        <div class="issues">&#x2705; 无重大负面报告<br>&#x2B50; 9.0 Wonderful &middot; 度假村品质<br>&#x2705; <strong style="color:#2ecc71;">安全卫生最佳</strong></div>
+      </div>
+      <div class="review-card good">
+        <h5 style="color:#2ecc71;">HGV Elara &mdash; 20/20 &#x2705;</h5>
+        <div class="issues">&#x2705; 无重大负面报告<br>&#x2B50; 9.0 Wonderful &middot; 公寓式度假村<br>&#x2705; 连通Planet Hollywood</div>
+      </div>
+      <div class="review-card good">
+        <h5 style="color:#2ecc71;">SAHARA &mdash; 18/20</h5>
+        <div class="issues">&#x2B50; 8.6 Excellent &middot; 2019全新翻新<br>&#x1F3CA; 泳池/SPA &middot; Strip北端<br>&#x2705; 整体评价良好</div>
+      </div>
+      <div class="review-card good">
+        <h5 style="color:#2ecc71;">Polo Towers &mdash; 18/20</h5>
+        <div class="issues">&#x2B50; 8.8 Excellent &middot; 公寓式<br>&#x1F3E0; 600sqft套房 &middot; 全厨房<br>&#x2705; 近Aria/Cosmopolitan</div>
+      </div>
+      <div class="review-card warn">
+        <h5 style="color:#f39c12;">Holiday Inn &mdash; 15/20</h5>
+        <div class="issues">&#x1F41C; 蚂蚁/蟑螂偶有报告<br>&#x1F9F9; 清洁/维护有待改善<br>&#x26A0; 风险较低, 性价比高</div>
+      </div>
+      <div class="review-card warn">
+        <h5 style="color:#f39c12;">Casino Royale &mdash; 14/20</h5>
+        <div class="issues">&#x1F3E8; 经济型老酒店<br>&#x1F9F9; 清洁度一般<br>&#x26A0; 位置极佳但设施旧</div>
+      </div>
+      <div class="review-card warn">
+        <h5 style="color:#f39c12;">NY-NY &mdash; 14/20</h5>
+        <div class="issues">&#x1F9F9; 清洁度参差不齐<br>&#x1F527; 部分房间老旧<br>&#x26A0; MGM旗下, 大型赌场酒店</div>
+      </div>
+      <div class="review-card warn">
+        <h5 style="color:#f39c12;">Treasure Island &mdash; 12/20</h5>
+        <div class="issues">&#x1F41C; 跳蚤诉讼案件记录<br>&#x1F9F9; 清洁/噪音问题<br>&#x26A0; 风险中等, 价格优势明显</div>
+      </div>
+      <div class="review-card bad">
+        <h5 style="color:#e74c3c;">Excalibur &mdash; 5/20 &#x274C;</h5>
+        <div class="issues">&#x1F41B; <strong>床虫</strong>多起确认报告+视频<br>&#x1F9F9; 卫生极差, TA评分2.3/5<br><strong style="color:#e74c3c;">&rarr; 强烈建议避开</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div style="margin-top:24px;">
+    <h4 style="color:var(--gold);font-size:14px;margin-bottom:14px;">&#x1F451; 最终推荐 (v2)</h4>
+    <div class="rank-grid">
+      <div class="rank-card" style="border-color:#9b59b6;">
+        <h4 style="color:#9b59b6;">&#x1F947; 综合最优: R2 HGV Strip&times;3</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          <strong style="color:#9b59b6;">总分84.6 &middot; 舒适度28.5/30!</strong><br>
+          3间独立Studio &middot; 各自有厨房 &middot; 评分9.0<br>
+          Strip上 &middot; 零差评 &middot; 安全满分 &middot; 度假村品质<br>
+          <span style="color:#2ecc71;">&#x2705; 舒适度最高 + 安全满分的完美组合</span>
+        </div>
+      </div>
+      <div class="rank-card" style="border-color:#9b59b6;">
+        <h4 style="color:#9b59b6;">&#x1F948; 套房最优: S2 HGV Strip 2BR</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          <strong style="color:#9b59b6;">总分83.3 &middot; 2BR Suite!</strong><br>
+          女生2个独立卧室 &middot; 1068sqft &middot; 全厨房<br>
+          Strip上 &middot; 零差评 &middot; 仅比R2便宜$16<br>
+          <span style="color:#e74c3c;">&#x26A0; 仅剩1间! 需尽快预订</span>
+        </div>
+      </div>
+      <div class="rank-card" style="border-color:rgba(155,89,182,0.7);">
+        <h4 style="color:#9b59b6;">&#x1F949; 最舒适: S4 HGV Strip 3BR Suite</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          <strong style="color:#9b59b6;">总分79.0 &middot; 舒适度满分30/30!</strong><br>
+          1432sqft 3卧室Premier Suite &middot; 每对独立King卧室<br>
+          全厨房+客厅 &middot; 零差评 &middot; Strip上 &middot; 9.4分<br>
+          <span style="color:#e74c3c;">&#x26A0; 仅剩1间! 价格较高$2,990</span>
+        </div>
+      </div>
+      <div class="rank-card" style="border-color:#2ecc71;">
+        <h4 style="color:#2ecc71;">最省钱: S1 Holiday Inn 2BR</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          <strong style="color:#2ecc71;">总分74.0 &middot; 总价最低$1,820</strong><br>
+          2BR套房: 2卧室+厨房+客厅 &middot; 评分9.0<br>
+          女生各有独立卧室(满足分房约束)<br>
+          <span style="color:#f39c12;">&#x26A0; 男生睡沙发(舒适度低) &middot; Off-Strip</span>
+        </div>
+      </div>
+      <div class="rank-card" style="border-color:var(--gold);">
+        <h4>&#x1F3C5; 舒适+安心: R7 Polo Towers</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          <strong style="color:var(--gold);">总分77.6 &middot; 每间600sqft!</strong><br>
+          公寓式套房 &middot; 全厨房 &middot; 评分8.8<br>
+          <span style="color:#2ecc71;">&#x2705; 空间最大 &middot; 安全18/20 &middot; 近Aria/Cosmo</span>
+        </div>
+      </div>
+      <div class="rank-card" style="border-color:var(--gold);">
+        <h4>三间房最便宜: R8 Casino Royale</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          <strong style="color:var(--gold);">总分75.2 &middot; 三间房仅$2,228</strong><br>
+          Strip中段极佳位置 &middot; 评分8.4<br>
+          <span style="color:#f39c12;">&#x26A0; 经济型老酒店, 舒适度一般(21/30)</span>
+        </div>
+      </div>
+      <div class="rank-card" style="border-color:#e74c3c;">
+        <h4 style="color:#e74c3c;">&#x274C; 不推荐: R3 Excalibur / R6 NY-NY</h4>
+        <div style="font-size:13px;color:#aaa;line-height:1.8;">
+          Excalibur: 床虫风险, 安全分仅5/20<br>
+          NY-NY: 最贵$3,053, 评分低, 性价比差<br>
+          <strong style="color:#e74c3c;">建议避开这两个选择</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 类别一: 套房方案 ===== -->
+<div class="section-title"><h2>&#x1F3E0; 套房方案 (2BR/3BR Suite &middot; 女生分卧室)</h2></div>
+<div class="plans">
+  <div class="plan-grid">
+    <div class="plan top">
+      <span class="cat-badge suite">套房</span>
+      <h3>&#x2728; S2: HGV Strip 2BR混合方案 (2BR Suite + Studio)</h3>
+      <div class="total-price">$2,539</div>
+      <div class="detail">
+        <strong>v2升级! Strip零差评度假村 2BR套房!</strong><br>
+        女房: HGV Suite 2BR (5/21-24, 4女分2卧室) &asymp; $1,472<br>
+        女B加住: HGV Studio (5/24-25, 2女) &asymp; $252<br>
+        男房: HGV Studio (5/22-25, 2男) &asymp; $815<br>
+        2BR Suite: 1068sqft &middot; 2 King Beds + Queen沙发床 &middot; 全厨房 &middot; 9.4分
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配 (v2: 女生分2卧室)</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; Suite 卧室1 &middot; King床 (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Suite 卧室2 &middot; King床 (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Studio (5/24-25) 加住1晚</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Studio (5/22-25) 3晚</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $368/人(3晚) | 女B: $494/人(4晚) | 男: $408/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 零差评 &middot; Strip上 &middot; 2个独立卧室 &middot; 全厨房</span><br>
+        <span style="color:#e74c3c;">&#x26A0; 仅剩1间2BR Suite! 需尽快预订</span>
+      </div>
+      <div class="detail" style="margin-top:10px;background:#181835;padding:10px;border-radius:8px;">
+        <strong style="color:#f39c12;">&#x1F504; v1 &rarr; v2 变更:</strong><br>
+        原方案: 1BR Suite($834) + Studio &times; 2 = $1,901 (4女挤1间)<br>
+        新方案: 2BR Suite($1,472) + Studio &times; 2 = $2,539 (2女/卧室)<br>
+        <span style="color:#f39c12;">价格增加$638, 但舒适度大幅提升(9 &rarr; 27/30)</span>
+      </div>
+    </div>
+
+    <div class="plan" style="border-color:rgba(155,89,182,0.6);">
+      <span class="cat-badge suite">套房</span>
+      <h3>&#x1F504; S5: HGV Strip 混合时段方案 (2BR Suite + Studio 错时) <span style="color:#f39c12;font-size:11px;">NEW</span></h3>
+      <div class="total-price">$2,654</div>
+      <div class="detail">
+        <strong>错时省钱! 男生只住2晚Studio, 第3晚搬入Suite!</strong><br>
+        女房: HGV 2BR Suite (5/21-25, 全程4晚) = $2,016 (含税)<br>
+        男房: HGV Studio (5/22-24, 仅2晚) = $638 (含税)<br>
+        2BR Suite: 1068sqft &middot; 2 King Beds + Queen沙发床 &middot; 全厨房 &middot; 9.4分
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配 (错时混合 &middot; 最后1晚男女同Suite)</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; Suite 卧室1 &middot; King床 (5/21-24, 3晚)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Suite 卧室2 &middot; King床 (5/21-25, 4晚)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Studio (5/22-24, 2晚)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Suite 卧室1 (5/24-25, 1晚) <span style="color:#f39c12;">&#x2190; 女A退房后搬入</span></div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用 (按房间人晚均摊):</strong><br>
+        女A: $378/人(3晚) | 女B: $504/人(4晚) | 男: $445/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 零差评 &middot; Strip上 &middot; 男生省1晚Studio费用</span><br>
+        <span style="color:#f39c12;">&#x26A0; 最后1晚(5/24-25) 男女同住一间Suite (各自独立卧室, 共用客厅/厨房)</span><br>
+        <span style="color:#e74c3c;">&#x26A0; 仅剩1间2BR Suite! 需尽快预订</span>
+      </div>
+      <div class="detail" style="margin-top:10px;background:#181835;padding:10px;border-radius:8px;">
+        <strong style="color:var(--gold);">&#x1F4A1; S5 vs S2 对比:</strong><br>
+        S5(混合时段): $2,654 &middot; Suite全程4晚+Studio仅2晚 &middot; 女B不用搬家 &middot; 总分80.0<br>
+        S2(2BR混合): $2,539 &middot; Suite仅3晚+Studio3晚 &middot; 女B最后1晚需搬Studio &middot; 总分83.3<br>
+        <span style="color:#9b59b6;">S5比S2贵$115, 但女B全程住Suite不用搬; 代价是最后1晚男女同Suite(各自卧室)</span>
+      </div>
+    </div>
+
+    <div class="plan" style="border-color:rgba(46,204,113,0.5);">
+      <span class="cat-badge suite">套房</span>
+      <h3>S1: Holiday Inn 2BR套房 (全员同住)</h3>
+      <div class="total-price">$1,820</div>
+      <div class="detail">
+        <strong>总价最低! 1间2卧室套房6人同住</strong><br>
+        Holiday Inn 2-Bedroom Suite (5/21-25) = $1,820<br>
+        2个独立卧室(各1 King) + 客厅沙发床 + 厨房<br>
+        面积: 1033sqft (约96平米) &middot; 评分 9.0
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配 (女生自然分卧室 &#x2705;)</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; 卧室1 &middot; King床 (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; 卧室2 &middot; King床 (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; 客厅沙发床 (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $273/人(3晚) | 女B: $364/人(4晚) | 男: $273/人(3晚)<br>
+        <span style="color:#f39c12;">&#x26A0; 男生睡客厅沙发床(舒适度15/30) &middot; Off-Strip需步行约10分钟</span><br>
+        <span style="color:#2ecc71;">&#x2705; 有厨房可做饭省餐费 &middot; 5个泳池 &middot; 评分高</span>
+      </div>
+    </div>
+
+    <div class="plan" style="border-color:rgba(155,89,182,0.6);">
+      <span class="cat-badge suite">套房</span>
+      <h3>&#x1F31F; S4: HGV Strip Premier 3BR Suite (6人同住) <span style="color:#f39c12;font-size:11px;">NEW</span></h3>
+      <div class="total-price">$2,990</div>
+      <div class="detail">
+        <strong>舒适度满分! 1432sqft 3卧室Premier Suite!</strong><br>
+        HGV Premier Suite 3BR (5/21-25) = $2,990 (含税总价)<br>
+        3个独立卧室(各1 King) + Queen沙发床 + 全厨房 + 客厅<br>
+        面积: 1432sqft (约133平米) &middot; 评分 9.4 Exceptional &middot; 52条评价
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配 (每对独立卧室 &#x2705;)</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; 卧室1 &middot; King床 (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; 卧室2 &middot; King床 (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; 卧室3 &middot; King床 (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用 (按人晚均摊, 含税总价):</strong><br>
+        女A: $449/人(3晚) | 女B: $598/人(4晚) | 男: $449/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 舒适度满分30/30 &middot; 零差评 &middot; Strip上 &middot; 每人独立King卧室</span><br>
+        <span style="color:#2ecc71;">&#x2705; 全厨房可做饭 &middot; 客厅可聚会 &middot; 度假村品质</span><br>
+        <span style="color:#e74c3c;">&#x26A0; 仅剩1间! 需尽快预订 &middot; 不可退款(可退+$528)</span>
+      </div>
+      <div class="detail" style="margin-top:10px;background:#181835;padding:10px;border-radius:8px;">
+        <strong style="color:var(--gold);">&#x1F4A1; S4 vs S5 vs S2 vs R2 对比:</strong><br>
+        S4(3BR Suite): $2,990 &middot; 1432sqft &middot; 3独立卧室 &middot; 舒适30/30 &middot; 总分79.0<br>
+        S5(混合时段): $2,654 &middot; Suite全程+Studio2晚 &middot; 舒适25.5/30 &middot; 总分80.0<br>
+        S2(2BR+Studio): $2,539 &middot; 1068sqft+360sqft &middot; 舒适27/30 &middot; 总分83.3<br>
+        R2(3&times;Studio): $2,555 &middot; 3&times;360sqft &middot; 舒适28.5/30 &middot; 总分84.6<br>
+        <span style="color:#9b59b6;">S4最舒适但最贵; S5女B不用搬家但最后1晚男女同Suite; R2总分最高</span>
+      </div>
+    </div>
+
+    <div class="plan" style="border-color:rgba(155,89,182,0.3);opacity:0.6;">
+      <span class="cat-badge suite" style="background:rgba(231,76,60,0.15);color:#e74c3c;border-color:rgba(231,76,60,0.3);">已移除</span>
+      <h3 style="color:#999;text-decoration:line-through;">S3: HGV Elara 1BR混合 (v1方案)</h3>
+      <div class="detail">
+        <strong style="color:#e74c3c;">&#x274C; 不满足新约束: 4女住1BR</strong><br>
+        Elara无2BR Suite可选 &rarr; 该方案无法满足"女生分房"约束<br>
+        <span style="color:#999;">如需Elara, 请参考R5(Elara&times;3间), 女生自然分2间房</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 类别二: 三间房方案 ===== -->
+<div class="section-title"><h2>&#x1F3E8; 三间房方案 (2女 + 2女 + 2男 &middot; 同酒店 &middot; 天然满足分房)</h2></div>
+<div class="plans">
+  <div class="plan-grid">
+
+    <!-- R2: HGV Strip -->
+    <div class="plan" style="border-color:#9b59b6;">
+      <span class="cat-badge room3">三间房</span>
+      <h3>&#x2728; R2: HGV on the Strip &times; 3间 (综合第1!)</h3>
+      <div class="total-price">$2,555</div>
+      <div class="detail">
+        <strong>舒适度+安全双满分! 零差评度假村</strong><br>
+        女A房: HGV Studio (5/21-24) &asymp; $734<br>
+        女B房: HGV Studio (5/21-25) = $1,006<br>
+        男房: HGV Studio (5/22-25) &asymp; $815<br>
+        评分: 9.0 Wonderful &middot; 安全卫生20/20
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; HGV Studio (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; HGV Studio (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; HGV Studio (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $367/人(3晚) | 女B: $503/人(4晚) | 男: $407/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 唯一零差评 &middot; 度假村品质 &middot; 全员安心 &middot; 舒适度最高28.5!</span><br>
+        <span style="color:#f39c12;">&#x26A0; 价格偏高, 但v2权重下排名跃升至第1</span>
+      </div>
+    </div>
+
+    <!-- R8: Casino Royale -->
+    <div class="plan" style="border-color:var(--gold);">
+      <span class="cat-badge room3">三间房</span>
+      <h3>&#x1F31F; R8: Casino Royale &times; 3间</h3>
+      <div class="total-price">$2,228</div>
+      <div class="detail">
+        <strong>三间房最便宜! Strip中段极佳位置</strong><br>
+        女A房: Casino Royale (5/21-24) &asymp; $640<br>
+        女B房: Casino Royale (5/21-25) = $877<br>
+        男房: Casino Royale (5/22-25) &asymp; $710<br>
+        评分: 8.4 Very Good &middot; Strip中段(Venetian旁)
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; 标准房 (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; 标准房 (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; 标准房 (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $320/人(3晚) | 女B: $439/人(4晚) | 男: $355/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 三间房最便宜 &middot; Strip中段绝佳位置</span><br>
+        <span style="color:#f39c12;">&#x26A0; 经济型老酒店 &middot; 舒适度仅21/30 &middot; 房间偏小</span>
+      </div>
+    </div>
+
+    <!-- R1: TI -->
+    <div class="plan" style="border-color:var(--gold);">
+      <span class="cat-badge room3">三间房</span>
+      <h3>R1: Treasure Island &times; 3间</h3>
+      <div class="total-price">$2,237</div>
+      <div class="detail">
+        <strong>性价比高! Strip中段黄金位置</strong><br>
+        女A房: TI Deluxe 2Queen (5/21-24) &asymp; $658<br>
+        女B房: TI Deluxe 2Queen (5/21-25) = $901<br>
+        男房: TI Run of House (5/22-25) &asymp; $678<br>
+        评分: 女房8.4 &middot; 男房8.2
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; Deluxe 2 Queen (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Deluxe 2 Queen (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Run of House (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $329/人(3晚) | 女B: $450/人(4晚) | 男: $339/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 独立房间 &middot; Strip中段 &middot; 泳池+热水浴缸</span><br>
+        <span style="color:#f39c12;">&#x26A0; 跳蚤诉讼记录 &middot; 安全分仅12/20</span>
+      </div>
+    </div>
+
+    <!-- R7: Polo Towers -->
+    <div class="plan">
+      <span class="cat-badge room3">三间房</span>
+      <h3>R7: Polo Towers &times; 3间</h3>
+      <div class="total-price">$2,619</div>
+      <div class="detail">
+        <strong>公寓式套房600sqft! 近Aria/Cosmo</strong><br>
+        女A房: 1BR Suite (5/21-24) &asymp; $753<br>
+        女B房: 1BR Suite (5/21-25) = $1,031<br>
+        男房: 1BR Suite (5/22-25) &asymp; $835<br>
+        评分: 8.8 Excellent &middot; 600sqft &middot; 全厨房
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; 1BR Suite (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; 1BR Suite (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; 1BR Suite (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $376/人(3晚) | 女B: $516/人(4晚) | 男: $418/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 每间都是600sqft套房 &middot; 全厨房 &middot; 空间大 &middot; 舒适度27/30</span><br>
+        <span style="color:#f39c12;">&#x26A0; 仅1 King+沙发床(无2Q选择) &middot; 2BR已售罄</span>
+      </div>
+    </div>
+
+    <!-- R4: SAHARA -->
+    <div class="plan">
+      <span class="cat-badge room3">三间房</span>
+      <h3>R4: SAHARA &times; 3间</h3>
+      <div class="total-price">$2,703</div>
+      <div class="detail">
+        <strong>2019全新翻新! Strip北端Hilton旗下</strong><br>
+        女A房: MARRA STYLE 2Q (5/21-24) &asymp; $777<br>
+        女B房: MARRA STYLE 2Q (5/21-25) = $1,064<br>
+        男房: MARRA STYLE 2Q (5/22-25) &asymp; $862<br>
+        评分: 8.6 Excellent &middot; 360sqft &middot; 2 Queen
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; MARRA 2 Queen (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; MARRA 2 Queen (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; MARRA 2 Queen (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $388/人(3晚) | 女B: $532/人(4晚) | 男: $431/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 2019全新翻新 &middot; 每间2 Queen床 &middot; 泳池</span><br>
+        <span style="color:#f39c12;">&#x26A0; Strip北端较偏 &middot; 价格偏高</span>
+      </div>
+    </div>
+
+    <!-- R5: HGV Elara -->
+    <div class="plan" style="border-color:rgba(155,89,182,0.3);">
+      <span class="cat-badge room3">三间房</span>
+      <h3>R5: HGV Elara &times; 3间</h3>
+      <div class="total-price">$2,967</div>
+      <div class="detail">
+        <strong>零差评公寓式! 连通Planet Hollywood</strong><br>
+        女A房: Elara Studio (5/21-24) &asymp; $853<br>
+        女B房: Elara Studio (5/21-25) = $1,168<br>
+        男房: Elara Studio (5/22-25) &asymp; $946<br>
+        评分: 9.0 Wonderful &middot; 公寓式 &middot; 厨房
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; Elara Studio (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Elara Studio (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Elara Studio (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $426/人(3晚) | 女B: $584/人(4晚) | 男: $473/人(3晚)<br>
+        <span style="color:#2ecc71;">&#x2705; 零差评 &middot; 公寓式度假村 &middot; Strip中心 &middot; 舒适度27/30</span><br>
+        <span style="color:#f39c12;">&#x26A0; 价格偏高 &middot; 仅Studio(无2Q) &middot; 替代了原S3方案</span>
+      </div>
+    </div>
+
+    <!-- R3: Excalibur (不推荐) -->
+    <div class="plan" style="border-color:#e74c3c;opacity:0.7;">
+      <span class="cat-badge room3">三间房</span>
+      <h3 style="color:#e74c3c;">&#x26A0; R3: Excalibur &times; 3间 (不推荐)</h3>
+      <div class="total-price" style="color:#e74c3c;">$2,390</div>
+      <div class="detail">
+        <strong style="color:#e74c3c;">床虫风险! 安全分仅5/20</strong><br>
+        女A房: Two Queen (5/21-24) &asymp; $687<br>
+        女B房: Two Queen (5/21-25) = $941<br>
+        男房: Two Queen (5/22-25) &asymp; $762<br>
+        评分: 7.0 &middot; 安全分仅5/20
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; Two Queen (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Two Queen (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Two Queen (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $343/人(3晚) | 女B: $470/人(4晚) | 男: $381/人(3晚)<br>
+        <span style="color:#e74c3c;">&#x274C; 床虫多起报告 &middot; 比TI贵 &middot; 评分低</span>
+      </div>
+    </div>
+
+    <!-- R6: NY-NY (不推荐) -->
+    <div class="plan" style="border-color:#e74c3c;opacity:0.7;">
+      <span class="cat-badge room3">三间房</span>
+      <h3 style="color:#e74c3c;">&#x26A0; R6: New York-New York &times; 3间 (最贵)</h3>
+      <div class="total-price" style="color:#e74c3c;">$3,053</div>
+      <div class="detail">
+        <strong style="color:#e74c3c;">全场最贵! 评分偏低性价比差</strong><br>
+        女A房: Soho 2Q (5/21-24) &asymp; $877<br>
+        女B房: Soho 2Q (5/21-25) = $1,202<br>
+        男房: Soho 2Q (5/22-25) &asymp; $974<br>
+        评分: 7.8 Good &middot; 清洁度参差不齐
+      </div>
+      <div class="room-assign">
+        <div class="ra-title">房间分配</div>
+        <div class="ra-row"><span class="dot f"></span> 女A组(2人) &rarr; Soho 2 Queen (5/21-24)</div>
+        <div class="ra-row"><span class="dot f"></span> 女B组(2人) &rarr; Soho 2 Queen (5/21-25)</div>
+        <div class="ra-row"><span class="dot m"></span> 男组(2人) &rarr; Soho 2 Queen (5/22-25)</div>
+      </div>
+      <div class="detail" style="margin-top:10px;">
+        <strong>人均费用:</strong><br>
+        女A: $439/人(3晚) | 女B: $601/人(4晚) | 男: $487/人(3晚)<br>
+        <span style="color:#e74c3c;">&#x274C; 最贵 &middot; 评分低于SAHARA/TI &middot; 性价比最差</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>数据来源: Expedia.com / IHG.com | 价格截至2026年3月22日查询 | <strong style="color:#2ecc71;">&#x2705; 所有价格均为含税含费总价 (Total Price Including Taxes &amp; Fees)</strong></p>
+  <p>3晚价格为估算值 (基于4晚含税总价 &times; 比例系数: 5/21-24=&times;0.73, 5/22-25=&times;0.81) | 实际价格以预订时为准</p>
+  <p>同酒店约束: 所有方案6人住同一家酒店 | v2新增: 女生分房约束(不得4女同住1间)</p>
+  <p>v2评分权重: 舒适度30 + 价格20 + 评分20 + 安全20 + 位置10 = 100</p>
+  <p>共9家酒店 &middot; 4种套房方案 + 8种三间房方案 = 12种住宿方案 (原S3已移除, 新增S4 3BR Suite + S5混合时段)</p>
+</div>
+
+<script>
+function openLB(src) {
+  document.getElementById('lb-img').src = src.replace('w=400','w=1200').replace('h=300','h=800').replace('w=800','w=1400').replace('h=500','h=900');
+  document.getElementById('lightbox').classList.add('active');
+}
+</script>
+
+</body>
+</html>
